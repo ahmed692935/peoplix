@@ -485,7 +485,7 @@ const features: Feature[] = [
   {
     side: "left",
     icon: <IconAutomate />,
-    title: "What Peoplix Can Automate",
+    title: "Enterprise HR Automation in Action",
     description:
       "Peoplix handles high-volume, high-friction employee requests end-to-end resolving them instantly without HR intervention.",
   },
