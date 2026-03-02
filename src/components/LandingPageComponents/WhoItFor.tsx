@@ -96,6 +96,8 @@ const WhoItsFor = () => {
       ([entry]) => {
         if (entry.isIntersecting && !triggered) {
           setTriggered(true);
+        } else {
+          setTriggered(false);
         }
       },
       { threshold: 0.35 },
@@ -103,7 +105,7 @@ const WhoItsFor = () => {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [triggered]);
+  }, []);
 
   return (
     <section

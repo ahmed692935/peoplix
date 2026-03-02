@@ -685,7 +685,7 @@ const WhatPeoplixCanAutomate = () => {
                       initial={{ rotate: 0 }}
                       whileInView={{ rotate: 360 }}
                       transition={{ duration: 0.8, ease: "easeInOut" }}
-                      viewport={{ once: true, amount: 0.5 }}
+                      viewport={{ once: false, amount: 0.5 }}
                     >
                       {f.icon}
                     </motion.div>
@@ -724,7 +724,7 @@ const WhatPeoplixCanAutomate = () => {
                       initial={{ rotate: 0 }}
                       whileInView={{ rotate: 360 }}
                       transition={{ duration: 0.8, ease: "easeInOut" }}
-                      viewport={{ once: true, amount: 0.5 }}
+                      viewport={{ once: false, amount: 0.5 }}
                     >
                       {f.icon}
                     </motion.div>

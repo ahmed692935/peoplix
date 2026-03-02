@@ -8,15 +8,70 @@ const HeroSection = () => {
   const fullText = "Enterprise Operations";
   const [typedText, setTypedText] = useState("");
 
+  // useEffect(() => {
+  //   let currentIndex = 0;
+  //   const interval = setInterval(() => {
+  //     setTypedText(fullText.slice(0, currentIndex + 1));
+  //     currentIndex++;
+  //     if (currentIndex === fullText.length) {
+  //       clearInterval(interval); // stop once complete
+  //     }
+  //   }, 100); // 100ms per letter
+  //   return () => clearInterval(interval);
+  // }, []);
   useEffect(() => {
     let currentIndex = 0;
+    let isDeleting = false;
+
+    const typingSpeed = 150;
+    const deletingSpeed = 100;
+    const pauseAfterTyping = 1000;
+
     const interval = setInterval(() => {
-      setTypedText(fullText.slice(0, currentIndex + 1));
-      currentIndex++;
-      if (currentIndex === fullText.length) {
-        clearInterval(interval); // stop once complete
+      if (!isDeleting) {
+        // Typing forward
+        setTypedText(fullText.slice(0, currentIndex + 1));
+        currentIndex++;
+
+        if (currentIndex === fullText.length) {
+          isDeleting = true;
+          clearInterval(interval);
+
+          setTimeout(() => {
+            startDeleting();
+          }, pauseAfterTyping);
+        }
       }
-    }, 100); // 100ms per letter
+    }, typingSpeed);
+
+    const startDeleting = () => {
+      const deleteInterval = setInterval(() => {
+        setTypedText(fullText.slice(0, currentIndex - 1));
+        currentIndex--;
+
+        if (currentIndex === 1) {
+          clearInterval(deleteInterval);
+          isDeleting = false;
+          startTyping();
+        }
+      }, deletingSpeed);
+    };
+
+    const startTyping = () => {
+      const typeInterval = setInterval(() => {
+        setTypedText(fullText.slice(0, currentIndex + 1));
+        currentIndex++;
+
+        if (currentIndex === fullText.length) {
+          clearInterval(typeInterval);
+          isDeleting = true;
+          setTimeout(() => {
+            startDeleting();
+          }, pauseAfterTyping);
+        }
+      }, typingSpeed);
+    };
+
     return () => clearInterval(interval);
   }, []);
 

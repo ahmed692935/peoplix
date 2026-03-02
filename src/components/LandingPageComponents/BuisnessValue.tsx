@@ -20,7 +20,7 @@ const CountUp = ({
   suffix?: string;
 }) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: false });
   const [count, setCount] = useState(0);
 
   useEffect(() => {
