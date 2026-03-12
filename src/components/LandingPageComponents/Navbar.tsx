@@ -209,7 +209,7 @@ const Navbar = () => {
               className="flex items-center gap-2 pr-2 cursor-pointer"
             >
               {/* Avatar */}
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white text-sm font-semibold shadow-md">
+              <div className="w-9 h-9 rounded-full bg-linear-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white text-sm font-semibold shadow-md">
                 {storedUser.email?.[0].toUpperCase() || "U"}
               </div>
               {/* Email + Role */}

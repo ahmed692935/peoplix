@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
   },
 });
 
-// ✅ REQUEST INTERCEPTOR
+// REQUEST INTERCEPTOR
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -24,7 +24,7 @@ axiosInstance.interceptors.request.use(
   (error) => Promise.reject(error),
 );
 
-// ✅ RESPONSE INTERCEPTOR
+// RESPONSE INTERCEPTOR
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -35,12 +35,16 @@ axiosInstance.interceptors.response.use(
 
     const { status, config } = error.response;
 
-    // 🚫 If login API fails → don't redirect
+    // If login API fails → don't redirect
     if (config.url?.includes("/auth/login")) {
-      return Promise.reject(error.response?.data?.message || "Login failed");
+      return Promise.reject(
+        error.response?.data?.detail ||
+          error.response?.data?.message ||
+          "Login failed",
+      );
     }
 
-    // 🔐 Unauthorized (only if token exists)
+    // Unauthorized (only if token exists)
     if (status === 401 && localStorage.getItem("token")) {
       localStorage.removeItem("token");
       localStorage.removeItem("role");
@@ -60,7 +64,11 @@ axiosInstance.interceptors.response.use(
       toast.error("Server error. Please try again later.");
     }
 
-    return Promise.reject(error.response?.data?.message || error.message);
+    return Promise.reject(
+      error.response?.data?.detail ||
+        error.response?.data?.message ||
+        error.message,
+    );
   },
 );
 

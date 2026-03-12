@@ -2,7 +2,7 @@ import LoginImage from "../../assets/images/login.png";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Logo from "../../assets/images/Vector.png";
-import { loginApi } from "../../api";
+import { loginApi } from "../../api/auth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -18,7 +18,7 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  // 🔥 Generic change handler
+  // Generic change handler
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -54,11 +54,18 @@ const LoginPage = () => {
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
 
-      toast.success("Login successful 🎉");
+      toast.success("Login successfully");
 
-      navigate("/dashboard", { replace: true });
+      if (role === "admin") {
+        navigate("/dashboard", { replace: true });
+      } else if (role === "user") {
+        navigate("/user/dashboard", { replace: true });
+      } else {
+        toast.error("Role not recognized");
+      }
     } catch (err: any) {
-      toast.error(err || "Invalid email or password");
+      const errorMessage = typeof err === "string" ? err : err?.message || "Invalid email or password";
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -146,7 +153,7 @@ const LoginPage = () => {
           </button> */}
             <button
               className="w-full mt-10 py-3 rounded-full 
-bg-gradient-to-r from-[#0F172A] to-[#080808] 
+bg-linear-to-r from-[#0F172A] to-[#080808] 
 cursor-pointer text-white font-medium 
 hover:shadow-[0_10px_20px_rgba(0,0,0,0.35)] 
 shadow-[0_15px_30px_rgba(0,0,0,0.45)] 
