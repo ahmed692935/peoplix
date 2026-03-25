@@ -62,9 +62,9 @@ const Solution = () => {
 
           {/* Heading */}
           <h2
-            className="max-w-3xl mt-10 tracking-tighter md:leading-18 text-3xl lg:text-[72px] font-semibold
-bg-gradient-to-b from-[#61666A] to-[#292C2E]
-bg-clip-text text-transparent"
+            className="max-w-3xl mt-10 tracking-tighter md:leading-[1.1] text-3xl lg:text-[72px] font-semibold
+bg-linear-to-b from-[#61666A] to-[#292C2E]
+bg-clip-text text-transparent pb-4"
           >
             Meet Autonomous AI Agents
           </h2>
@@ -87,11 +87,10 @@ bg-clip-text text-transparent"
                 key={service.id}
                 onClick={() => setActiveId(service.id)}
                 className={`cursor-pointer rounded-2xl transition-all duration-500 overflow-hidden
-                  ${
-                    isActive
-                      ? //   ? "bg-[#1a1f2e] text-white shadow-xl"
-                        "relative text-white shadow-xl"
-                      : "bg-[#F5F5F7] text-[#6B7280] hover:bg-[#EBEBED]"
+                  ${isActive
+                    ? //   ? "bg-[#1a1f2e] text-white shadow-xl"
+                    "relative text-white shadow-xl"
+                    : "bg-[#F5F5F7] text-[#6B7280] hover:bg-[#EBEBED]"
                   }`}
               >
                 {isActive && (

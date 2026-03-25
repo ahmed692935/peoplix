@@ -25,7 +25,7 @@ const TheProblem = () => {
       </div>
 
       {/* Title */}
-      <div className="text-[#292C2E] tracking-tighter text-2xl sm:text-4xl lg:text-[65px] lg:leading-[4rem] font-semibold flex flex-col items-center mt-5 text-center">
+      <div className="text-[#292C2E] tracking-tighter text-2xl sm:text-4xl lg:text-[65px] lg:leading-[1.2] font-semibold flex flex-col items-center mt-5 text-center mb-5">
         <span>Enterprise Service Teams</span>
         <span>Are Overwhelmed</span>
       </div>
@@ -35,10 +35,9 @@ const TheProblem = () => {
         {/* Top Fade */}
         {/* <div className="absolute -top-10 left-0 w-full h-16 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" /> */}
         {/* White Top Fade Shadow */}
+        {/* bg-linear-to-t from-white to-transparent */}
         <div
-          className="absolute -top-10 md:-top-20 left-0 w-full sm:h-20
-    bg-gradient-to-t from-white to-transparent
-    z-20 pointer-events-none"
+          className="absolute -top-10 md:-top-20 left-0 w-full sm:h-20 z-20 pointer-events-none"
         ></div>
         {/* "The Pain" badge */}
         <div className="absolute top-5 sm:top-10 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 text-sm text-white py-1 px-3 rounded-full border border-gray-500 bg-transparent whitespace-nowrap">
@@ -61,7 +60,7 @@ const TheProblem = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
-              className="absolute hidden sm:block top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gray-400 to-transparent -translate-y-1/2 pointer-events-none"
+              className="absolute hidden sm:block top-1/2 left-0 w-full h-px bg-linear-to-r from-transparent via-gray-400 to-transparent -translate-y-1/2 pointer-events-none"
             />
 
             {/* Vertical Divider */}
@@ -69,7 +68,7 @@ const TheProblem = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
-              className="hidden sm:block absolute left-1/2 top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-gray-400 to-transparent -translate-x-1/2 pointer-events-none"
+              className="hidden sm:block absolute left-1/2 top-0 h-full w-px bg-linear-to-b from-transparent via-gray-400 to-transparent -translate-x-1/2 pointer-events-none"
             />
 
             {problems.map((p, idx) => (
