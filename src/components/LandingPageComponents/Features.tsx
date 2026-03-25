@@ -319,450 +319,668 @@
 
 // export default WhatPeoplixCanAutomate;
 
+// // ─── PREVIOUS ACTIVE CODE (COMMENTED OUT) ──────────────────────────────────
+// import { useEffect, useRef, useState, useCallback } from "react";
+// import { motion } from "framer-motion";
+
+// // ─── Icons ──────────────────────────────────────────────────────────────────
+// const IconAutomate = () => (
+//   <svg
+//     width="22"
+//     height="22"
+//     viewBox="0 0 22 22"
+//     fill="none"
+//     stroke="white"
+//     strokeWidth="1.6"
+//     strokeLinecap="round"
+//     strokeLinejoin="round"
+//   >
+//     <rect x="2" y="3" width="18" height="14" rx="2" />
+//     <line x1="11" y1="17" x2="11" y2="20" />
+//     <line x1="7" y1="20" x2="15" y2="20" />
+//     <rect x="5" y="7" width="4" height="3" rx="0.5" />
+//     <line x1="12" y1="8" x2="16" y2="8" />
+//     <line x1="12" y1="11" x2="14" y2="11" />
+//   </svg>
+// );
+// const IconAddress = () => (
+//   <svg
+//     width="22"
+//     height="22"
+//     viewBox="0 0 22 22"
+//     fill="none"
+//     stroke="white"
+//     strokeWidth="1.6"
+//     strokeLinecap="round"
+//     strokeLinejoin="round"
+//   >
+//     <rect x="3" y="2" width="16" height="18" rx="2" />
+//     <line x1="7" y1="7" x2="15" y2="7" />
+//     <line x1="7" y1="11" x2="15" y2="11" />
+//     <line x1="7" y1="15" x2="11" y2="15" />
+//     <polyline points="13,13 16,16 20,12" />
+//   </svg>
+// );
+// const IconPaycheck = () => (
+//   <svg
+//     width="22"
+//     height="22"
+//     viewBox="0 0 22 22"
+//     fill="none"
+//     stroke="white"
+//     strokeWidth="1.6"
+//     strokeLinecap="round"
+//     strokeLinejoin="round"
+//   >
+//     <rect x="2" y="5" width="18" height="12" rx="2" />
+//     <line x1="2" y1="9" x2="20" y2="9" />
+//     <line x1="6" y1="13" x2="9" y2="13" />
+//     <line x1="13" y1="13" x2="16" y2="13" />
+//   </svg>
+// );
+// const IconAuth = () => (
+//   <svg
+//     width="22"
+//     height="22"
+//     viewBox="0 0 22 22"
+//     fill="none"
+//     stroke="white"
+//     strokeWidth="1.6"
+//     strokeLinecap="round"
+//     strokeLinejoin="round"
+//   >
+//     <circle cx="11" cy="7" r="4" />
+//     <path d="M3 19c0-4 3.6-7 8-7s8 3 8 7" />
+//     <polyline points="14,9 16,11 20,7" />
+//   </svg>
+// );
+// const IconPolicy = () => (
+//   <svg
+//     width="22"
+//     height="22"
+//     viewBox="0 0 22 22"
+//     fill="none"
+//     stroke="white"
+//     strokeWidth="1.6"
+//     strokeLinecap="round"
+//     strokeLinejoin="round"
+//   >
+//     <path d="M11 2L4 5v6c0 5 3.2 8.5 7 9.8C15 19.5 18 16 18 11V5l-7-3z" />
+//     <polyline points="8,11 10,13 14,9" />
+//   </svg>
+// );
+// const IconWorkday = () => (
+//   <svg
+//     width="22"
+//     height="22"
+//     viewBox="0 0 22 22"
+//     fill="none"
+//     stroke="white"
+//     strokeWidth="1.6"
+//     strokeLinecap="round"
+//     strokeLinejoin="round"
+//   >
+//     <polygon points="13,2 20,6 20,14 13,18 6,14 6,6" />
+//     <polyline points="8,10 11,13 15,8" />
+//   </svg>
+// );
+
+// const PeoplixIcon = () => (
+//   <svg width="36" height="26" viewBox="0 0 36 26" fill="none">
+//     <circle cx="12" cy="13" r="10" fill="white" fillOpacity="0.95" />
+//     <circle cx="24" cy="13" r="10" fill="white" fillOpacity="0.55" />
+//   </svg>
+// );
+
+// const PeoplixCenterBox = () => (
+//   <div className="flex flex-col items-center">
+//     <div
+//       style={{
+//         filter:
+//           "drop-shadow(0 0 28px rgba(6,182,212,0.75)) drop-shadow(0 0 60px rgba(6,182,212,0.4))",
+//       }}
+//     >
+//       <div
+//         className="w-[130px] h-[130px] rounded-[28px] flex flex-col items-center justify-center gap-2 relative overflow-hidden"
+//         style={{
+//           background:
+//             "linear-gradient(145deg, #0e7490 0%, #0891b2 50%, #22d3ee 100%)",
+//           boxShadow:
+//             "inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(0,0,0,0.15)",
+//         }}
+//       >
+//         <div
+//           className="absolute inset-0 rounded-[28px]"
+//           style={{
+//             background:
+//               "radial-gradient(ellipse at 40% 25%, rgba(255,255,255,0.25) 0%, transparent 60%)",
+//           }}
+//         />
+//         <PeoplixIcon />
+//         <span className="text-white font-bold text-[15px] tracking-wide relative z-10 select-none">
+//           Peoplix
+//         </span>
+//       </div>
+//     </div>
+//     <div
+//       className="w-24 h-4 -mt-1"
+//       style={{
+//         background:
+//           "radial-gradient(ellipse, rgba(6,182,212,0.5) 0%, transparent 70%)",
+//         filter: "blur(6px)",
+//       }}
+//     />
+//   </div>
+// );
+
+// interface Feature {
+//   icon: React.ReactNode;
+//   title: string;
+//   description: string;
+//   side: "left" | "right";
+// }
+
+// const features: Feature[] = [
+//   {
+//     side: "left",
+//     icon: <IconAutomate />,
+//     title: "Enterprise HR Automation in Action",
+//     description:
+//       "Peoplix handles high-volume, high-friction employee requests end-to-end resolving them instantly without HR intervention.",
+//   },
+//   {
+//     side: "left",
+//     icon: <IconAddress />,
+//     title: "Update my home address",
+//     description:
+//       "Peoplix verifies identity, updates records directly in Workday, and confirms completion in real time without creating a ticket.",
+//   },
+//   {
+//     side: "left",
+//     icon: <IconPaycheck />,
+//     title: "Why is my paycheck lower?",
+//     description:
+//       "Peoplix analyzes payroll data, reviews deductions, tax changes, or benefit adjustments, applies company policy logic.",
+//   },
+//   {
+//     side: "right",
+//     icon: <IconAuth />,
+//     title: "Authenticates Employees",
+//     description:
+//       "Peoplix securely verifies employee identity before processing any request, using enterprise auth protocols and role-based access controls.",
+//   },
+//   {
+//     side: "right",
+//     icon: <IconPolicy />,
+//     title: "Applies HR Policy",
+//     description:
+//       "Peoplix dynamically interprets and applies company-specific HR policies in real time. Whether it's eligibility rules, accrual logic, payroll conditions.",
+//   },
+//   {
+//     side: "right",
+//     icon: <IconWorkday />,
+//     title: "Executes Transactions in Workday",
+//     description:
+//       "Peoplix doesn't stop at answering questions. It performs real system actions directly inside Workday and other enterprise platforms.",
+//   },
+// ];
+
+// interface Line {
+//   x1: number;
+//   y1: number;
+//   x2: number;
+//   y2: number;
+// }
+
+// const WhatPeoplixCanAutomate = () => {
+//   const wrapperRef = useRef<HTMLDivElement>(null);
+//   const centerRef = useRef<HTMLDivElement>(null);
+//   const cardRefs = useRef<(HTMLDivElement | null)[]>(Array(6).fill(null));
+
+//   const [lines, setLines] = useState<Line[]>([]);
+//   const [svgSize, setSvgSize] = useState({ w: 0, h: 0 });
+
+//   const recalc = useCallback(() => {
+//     const wrapper = wrapperRef.current;
+//     const center = centerRef.current;
+//     if (!wrapper || !center) return;
+//     const wRect = wrapper.getBoundingClientRect();
+//     const cRect = center.getBoundingClientRect();
+//     const cx = cRect.left - wRect.left + cRect.width / 2;
+//     const cy = cRect.top - wRect.top + cRect.height / 2;
+//     const newLines: Line[] = [];
+//     cardRefs.current.forEach((card, idx) => {
+//       if (!card) return;
+//       const r = card.getBoundingClientRect();
+//       const isLeft = idx < 3;
+//       const ex = isLeft ? r.right - wRect.left : r.left - wRect.left;
+//       const ey = r.top - wRect.top + r.height / 2;
+//       newLines.push({ x1: ex, y1: ey, x2: cx, y2: cy });
+//     });
+//     setSvgSize({ w: wRect.width, h: wRect.height });
+//     setLines(newLines);
+//   }, []);
+
+//   useEffect(() => {
+//     const t = setTimeout(recalc, 80);
+//     window.addEventListener("resize", recalc);
+//     let ro: ResizeObserver | null = null;
+//     if (wrapperRef.current && typeof ResizeObserver !== "undefined") {
+//       ro = new ResizeObserver(recalc);
+//       ro.observe(wrapperRef.current);
+//     }
+//     return () => {
+//       clearTimeout(t);
+//       window.removeEventListener("resize", recalc);
+//       ro?.disconnect();
+//     };
+//   }, [recalc]);
+
+//   const leftFeatures = features.filter((f) => f.side === "left");
+//   const rightFeatures = features.filter((f) => f.side === "right");
+
+//   return (
+//     <section className="py-16 px-4 sm:px-6">
+//       <div className="max-w-6xl mx-auto">
+//         <div className="text-center mb-12">
+//           <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-4 py-1.5 mb-6 shadow-sm">
+//             <span className="w-[7px] h-[7px] rounded-full bg-cyan-400 animate-pulse shrink-0" />
+//             <span className="text-sm font-semibold text-cyan-400 tracking-wide">
+//               Features
+//             </span>
+//           </div>
+//           <h2 className="text-[clamp(28px,5vw,52px)] font-bold text-slate-800 tracking-tight leading-tight">
+//             What Peoplix Can Automate
+//           </h2>
+//         </div>
+//         <div className="hidden lg:block">
+//           <div ref={wrapperRef} className="relative">
+//             {svgSize.w > 0 && (
+//               <svg className="absolute inset-0 pointer-events-none z-20" width={svgSize.w} height={svgSize.h}>
+//                 <defs>
+//                   <marker id="m-dot" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+//                     <circle cx="4" cy="4" r="2.5" fill="white" stroke="#94a3b8" strokeWidth="1.2" />
+//                   </marker>
+//                 </defs>
+//                 {lines.map((l, i) => (
+//                   <line key={i} x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="5 4" markerStart="url(#m-dot)" markerEnd="url(#m-dot)" />
+//                 ))}
+//               </svg>
+//             )}
+//             <div className="grid grid-cols-[1fr_180px_1fr]">
+//               <div className="flex flex-col gap-5 pr-10">
+//                 {leftFeatures.map((f, i) => (
+//                   <div key={i} ref={(el) => { cardRefs.current[i] = el; }} className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-200">
+//                     <motion.div className="w-11 h-11 rounded-xl bg-[#0f1f2e] flex items-center justify-center mb-3" initial={{ rotate: 0 }} whileInView={{ rotate: 360 }} transition={{ duration: 0.8, ease: "easeInOut" }} viewport={{ once: false, amount: 0.5 }}>
+//                       {f.icon}
+//                     </motion.div>
+//                     <h3 className="text-[15px] font-bold text-slate-800 mb-1.5 leading-snug">{f.title}</h3>
+//                     <p className="text-[13px] text-slate-500 leading-relaxed">{f.description}</p>
+//                   </div>
+//                 ))}
+//               </div>
+//               <div className="flex items-center justify-center z-100">
+//                 <div ref={centerRef}>
+//                   <PeoplixCenterBox />
+//                 </div>
+//               </div>
+//               <div className="flex flex-col gap-5 pl-10">
+//                 {rightFeatures.map((f, i) => (
+//                   <div key={i} ref={(el) => { cardRefs.current[i + 3] = el; }} className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-200">
+//                     <motion.div className="w-11 h-11 rounded-xl bg-[#0f1f2e] flex items-center justify-center mb-3" initial={{ rotate: 0 }} whileInView={{ rotate: 360 }} transition={{ duration: 0.8, ease: "easeInOut" }} viewport={{ once: false, amount: 0.5 }}>
+//                       {f.icon}
+//                     </motion.div>
+//                     <h3 className="text-[15px] font-bold text-slate-800 mb-1.5 leading-snug">{f.title}</h3>
+//                     <p className="text-[13px] text-slate-500 leading-relaxed">{f.description}</p>
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="lg:hidden flex flex-col items-center gap-8">
+//           <PeoplixCenterBox />
+//           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+//             {features.map((f, i) => (
+//               <div key={i} className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+//                 <div className="w-11 h-11 rounded-xl bg-[#0f1f2e] flex items-center justify-center mb-3">{f.icon}</div>
+//                 <h3 className="text-[15px] font-bold text-slate-800 mb-1.5 leading-snug">{f.title}</h3>
+//                 <p className="text-[13px] text-slate-500 leading-relaxed">{f.description}</p>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default WhatPeoplixCanAutomate;
+
+
+// ─── NEW ENHANCED IMPLEMENTATION (ACTIVE) ──────────────────────────────────
 import { useEffect, useRef, useState, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // ─── Icons ──────────────────────────────────────────────────────────────────
 const IconAutomate = () => (
-  <svg
-    width="22"
-    height="22"
-    viewBox="0 0 22 22"
-    fill="none"
-    stroke="white"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="2" y="3" width="18" height="14" rx="2" />
-    <line x1="11" y1="17" x2="11" y2="20" />
-    <line x1="7" y1="20" x2="15" y2="20" />
-    <rect x="5" y="7" width="4" height="3" rx="0.5" />
-    <line x1="12" y1="8" x2="16" y2="8" />
-    <line x1="12" y1="11" x2="14" y2="11" />
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
   </svg>
 );
+
 const IconAddress = () => (
-  <svg
-    width="22"
-    height="22"
-    viewBox="0 0 22 22"
-    fill="none"
-    stroke="white"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="3" y="2" width="16" height="18" rx="2" />
-    <line x1="7" y1="7" x2="15" y2="7" />
-    <line x1="7" y1="11" x2="15" y2="11" />
-    <line x1="7" y1="15" x2="11" y2="15" />
-    <polyline points="13,13 16,16 20,12" />
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+    <polyline points="9 22 9 12 15 12 15 22" />
   </svg>
 );
+
 const IconPaycheck = () => (
-  <svg
-    width="22"
-    height="22"
-    viewBox="0 0 22 22"
-    fill="none"
-    stroke="white"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="2" y="5" width="18" height="12" rx="2" />
-    <line x1="2" y1="9" x2="20" y2="9" />
-    <line x1="6" y1="13" x2="9" y2="13" />
-    <line x1="13" y1="13" x2="16" y2="13" />
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="12" y1="1" x2="12" y2="23" />
+    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
   </svg>
 );
+
 const IconAuth = () => (
-  <svg
-    width="22"
-    height="22"
-    viewBox="0 0 22 22"
-    fill="none"
-    stroke="white"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="11" cy="7" r="4" />
-    <path d="M3 19c0-4 3.6-7 8-7s8 3 8 7" />
-    <polyline points="14,9 16,11 20,7" />
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
   </svg>
 );
+
 const IconPolicy = () => (
-  <svg
-    width="22"
-    height="22"
-    viewBox="0 0 22 22"
-    fill="none"
-    stroke="white"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M11 2L4 5v6c0 5 3.2 8.5 7 9.8C15 19.5 18 16 18 11V5l-7-3z" />
-    <polyline points="8,11 10,13 14,9" />
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
   </svg>
 );
+
 const IconWorkday = () => (
-  <svg
-    width="22"
-    height="22"
-    viewBox="0 0 22 22"
-    fill="none"
-    stroke="white"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <polygon points="13,2 20,6 20,14 13,18 6,14 6,6" />
-    <polyline points="8,10 11,13 15,8" />
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 6 12 12 16 14" />
   </svg>
 );
 
 // ─── Peoplix Logo ────────────────────────────────────────────────────────────
-const PeoplixIcon = () => (
-  <svg width="36" height="26" viewBox="0 0 36 26" fill="none">
-    <circle cx="12" cy="13" r="10" fill="white" fillOpacity="0.95" />
-    <circle cx="24" cy="13" r="10" fill="white" fillOpacity="0.55" />
+const PeoplixIconEnhanced = () => (
+  <svg width="40" height="30" viewBox="0 0 40 30" fill="none">
+    <motion.circle
+      cx="14" cy="15" r="12" fill="white" fillOpacity="0.9"
+      animate={{ scale: [1, 1.05, 1] }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+    />
+    <motion.circle
+      cx="26" cy="15" r="12" fill="white" fillOpacity="0.5"
+      animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.7, 0.5] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+    />
   </svg>
 );
 
-const PeoplixCenterBox = () => (
-  <div className="flex flex-col items-center">
-    <div
-      style={{
-        filter:
-          "drop-shadow(0 0 28px rgba(6,182,212,0.75)) drop-shadow(0 0 60px rgba(6,182,212,0.4))",
-      }}
-    >
-      <div
-        className="w-[130px] h-[130px] rounded-[28px] flex flex-col items-center justify-center gap-2 relative overflow-hidden"
+const PeoplixCenterBoxEnhanced = () => (
+  <div className="flex flex-col items-center group">
+    <div className="relative">
+      <motion.div
+        className="absolute inset-0 bg-cyan-400 blur-2xl opacity-40 rounded-full"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 4, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute inset-0 bg-cyan-300 blur-[80px] opacity-20 rounded-full"
+        animate={{ scale: [1, 1.4, 1] }}
+        transition={{ duration: 6, repeat: Infinity }}
+      />
+
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        className="w-[140px] h-[140px] rounded-[32px] flex flex-col items-center justify-center gap-3 relative z-10 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden"
         style={{
-          background:
-            "linear-gradient(145deg, #0e7490 0%, #0891b2 50%, #22d3ee 100%)",
-          boxShadow:
-            "inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(0,0,0,0.15)",
+          background: "linear-gradient(145deg, rgba(14, 116, 144, 0.9) 0%, rgba(8, 145, 178, 0.8) 50%, rgba(34, 211, 238, 0.7) 100%)",
         }}
       >
-        <div
-          className="absolute inset-0 rounded-[28px]"
-          style={{
-            background:
-              "radial-gradient(ellipse at 40% 25%, rgba(255,255,255,0.25) 0%, transparent 60%)",
-          }}
-        />
-        <PeoplixIcon />
-        <span className="text-white font-bold text-[15px] tracking-wide relative z-10 select-none">
+        <div className="absolute inset-0 bg-linear-to-br from-white/10 to-transparent pointer-events-none" />
+        <PeoplixIconEnhanced />
+        <span className="text-white font-black text-lg tracking-wider relative z-10 uppercase drop-shadow-md">
           Peoplix
         </span>
-      </div>
+        <motion.div
+          className="absolute top-0 left-0 w-full h-[2px] bg-cyan-200/50 blur-[2px]"
+          animate={{ top: ["0%", "100%", "0%"] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        />
+      </motion.div>
     </div>
-    <div
-      className="w-24 h-4 -mt-1"
-      style={{
-        background:
-          "radial-gradient(ellipse, rgba(6,182,212,0.5) 0%, transparent 70%)",
-        filter: "blur(6px)",
-      }}
+
+    <motion.div
+      className="w-24 h-4 bg-cyan-500/20 blur-md rounded-[100%] mt-4"
+      animate={{ width: ["80%", "110%", "80%"], opacity: [0.4, 0.6, 0.4] }}
+      transition={{ duration: 4, repeat: Infinity }}
     />
   </div>
 );
 
 // ─── Data ────────────────────────────────────────────────────────────────────
-interface Feature {
+interface FeatureEnhanced {
   icon: React.ReactNode;
   title: string;
   description: string;
   side: "left" | "right";
+  color: string;
 }
 
-const features: Feature[] = [
+const featuresEnhanced: FeatureEnhanced[] = [
   {
     side: "left",
     icon: <IconAutomate />,
-    title: "Enterprise HR Automation in Action",
-    description:
-      "Peoplix handles high-volume, high-friction employee requests end-to-end resolving them instantly without HR intervention.",
+    title: "HR Automation",
+    description: "Peoplix handles high-volume requests instantly without human intervention.",
+    color: "cyan",
   },
   {
     side: "left",
     icon: <IconAddress />,
-    title: "Update my home address",
-    description:
-      "Peoplix verifies identity, updates records directly in Workday, and confirms completion in real time without creating a ticket.",
+    title: "Address Updates",
+    description: "Verifies identity and updates Workday records in real time.",
+    color: "blue",
   },
   {
     side: "left",
     icon: <IconPaycheck />,
-    title: "Why is my paycheck lower?",
-    description:
-      "Peoplix analyzes payroll data, reviews deductions, tax changes, or benefit adjustments, applies company policy logic.",
+    title: "Payroll Logic",
+    description: "Analyzes deductions and tax changes relative to company policy.",
+    color: "indigo",
   },
   {
     side: "right",
     icon: <IconAuth />,
-    title: "Authenticates Employees",
-    description:
-      "Peoplix securely verifies employee identity before processing any request, using enterprise auth protocols and role-based access controls.",
+    title: "Identity Auth",
+    description: "Secure verification using enterprise protocols and RBAC.",
+    color: "emerald",
   },
   {
     side: "right",
     icon: <IconPolicy />,
-    title: "Applies HR Policy",
-    description:
-      "Peoplix dynamically interprets and applies company-specific HR policies in real time. Whether it's eligibility rules, accrual logic, payroll conditions.",
+    title: "Policy Engine",
+    description: "Interprets complex eligibility and accrual rules dynamically.",
+    color: "teal",
   },
   {
     side: "right",
     icon: <IconWorkday />,
-    title: "Executes Transactions in Workday",
-    description:
-      "Peoplix doesn't stop at answering questions. It performs real system actions directly inside Workday and other enterprise platforms.",
+    title: "System Execution",
+    description: "Directly executes transactions within Workday and other platforms.",
+    color: "sky",
   },
 ];
 
-// ─── Line type ───────────────────────────────────────────────────────────────
-interface Line {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
+interface LineDataEnhanced {
+  id: string;
+  path: string;
+  side: "left" | "right";
 }
 
-// ─── Main Component ──────────────────────────────────────────────────────────
 const WhatPeoplixCanAutomate = () => {
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const centerRef = useRef<HTMLDivElement>(null);
-  // 6 card refs: index 0-2 = left, 3-5 = right
-  const cardRefs = useRef<(HTMLDivElement | null)[]>(Array(6).fill(null));
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const [lines, setLines] = useState<Line[]>([]);
-  const [svgSize, setSvgSize] = useState({ w: 0, h: 0 });
+  const [lines, setLines] = useState<LineDataEnhanced[]>([]);
+  const [dimensions, setDimensions] = useState({ w: 0, h: 0 });
 
-  const recalc = useCallback(() => {
-    const wrapper = wrapperRef.current;
-    const center = centerRef.current;
-    if (!wrapper || !center) return;
+  const calculatePaths = useCallback(() => {
+    if (!containerRef.current || !centerRef.current) return;
 
-    const wRect = wrapper.getBoundingClientRect();
-    const cRect = center.getBoundingClientRect();
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const centerRect = centerRef.current.getBoundingClientRect();
+    const cx = centerRect.left - containerRect.left + centerRect.width / 2;
+    const cy = centerRect.top - containerRect.top + centerRect.height / 2;
 
-    // Center of Peoplix box relative to wrapper
-    const cx = cRect.left - wRect.left + cRect.width / 2;
-    const cy = cRect.top - wRect.top + cRect.height / 2;
-
-    const newLines: Line[] = [];
-
-    cardRefs.current.forEach((card, idx) => {
-      if (!card) return;
-      const r = card.getBoundingClientRect();
-
-      // Left cards (0-2): connect from right-center edge
-      // Right cards (3-5): connect from left-center edge
-      const isLeft = idx < 3;
-      const ex = isLeft
-        ? r.right - wRect.left // right edge of left card
-        : r.left - wRect.left; // left edge of right card
-      const ey = r.top - wRect.top + r.height / 2;
-
-      newLines.push({ x1: ex, y1: ey, x2: cx, y2: cy });
+    const newLines: LineDataEnhanced[] = cardRefs.current.map((card, i) => {
+      if (!card) return { id: `line-${i}`, path: "", side: featuresEnhanced[i].side };
+      const cardRect = card.getBoundingClientRect();
+      const isLeft = featuresEnhanced[i].side === "left";
+      const ex = isLeft ? cardRect.right - containerRect.left : cardRect.left - containerRect.left;
+      const ey = cardRect.top - containerRect.top + cardRect.height / 2;
+      const horizontalGap = Math.abs(cx - ex);
+      const cp1x = isLeft ? ex + horizontalGap * 0.5 : ex - horizontalGap * 0.5;
+      const cp2x = isLeft ? cx - horizontalGap * 0.2 : cx + horizontalGap * 0.2;
+      return {
+        id: `line-${i}`,
+        path: `M ${ex} ${ey} C ${cp1x} ${ey}, ${cp2x} ${cy}, ${cx} ${cy}`,
+        side: featuresEnhanced[i].side
+      };
     });
-
-    setSvgSize({ w: wRect.width, h: wRect.height });
+    setDimensions({ w: containerRect.width, h: containerRect.height });
     setLines(newLines);
   }, []);
 
   useEffect(() => {
-    // Initial calc after paint
-    const t = setTimeout(recalc, 80);
-
-    // Recalc on resize
-    window.addEventListener("resize", recalc);
-
-    // Watch wrapper size changes with ResizeObserver
-    let ro: ResizeObserver | null = null;
-    if (wrapperRef.current && typeof ResizeObserver !== "undefined") {
-      ro = new ResizeObserver(recalc);
-      ro.observe(wrapperRef.current);
-    }
-
+    const timer = setTimeout(calculatePaths, 150);
+    window.addEventListener("resize", calculatePaths);
+    const observer = new ResizeObserver(calculatePaths);
+    if (containerRef.current) observer.observe(containerRef.current);
     return () => {
-      clearTimeout(t);
-      window.removeEventListener("resize", recalc);
-      ro?.disconnect();
+      clearTimeout(timer);
+      window.removeEventListener("resize", calculatePaths);
+      observer.disconnect();
     };
-  }, [recalc]);
-
-  const leftFeatures = features.filter((f) => f.side === "left");
-  const rightFeatures = features.filter((f) => f.side === "right");
+  }, [calculatePaths]);
 
   return (
-    <section className="py-16 px-4 sm:px-6">
+    <section className="py-24 px-4 sm:px-6 relative overflow-hidden bg-slate-50/50">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-4 py-1.5 mb-6 shadow-sm">
-            <span className="w-[7px] h-[7px] rounded-full bg-cyan-400 animate-pulse shrink-0" />
-            <span className="text-sm font-semibold text-cyan-400 tracking-wide">
-              Features
-            </span>
-          </div>
-          <h2 className="text-[clamp(28px,5vw,52px)] font-bold text-slate-800 tracking-tight leading-tight">
-            What Peoplix Can Automate
+        <div className="text-center mb-20 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-2xl px-5 py-2 mb-8 shadow-sm"
+          >
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+            <span className="text-sm font-bold text-cyan-500 tracking-wider uppercase">Capabilities</span>
+          </motion.div>
+
+          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-6 shadow-sm">
+            What Peoplix Can <span className="bg-linear-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent italic">Automate</span>
           </h2>
+
+          <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            Eliminate repetitive tasks and resolve employee requests end-to-end with autonomous AI agents.
+          </p>
         </div>
 
-        {/* ── Desktop (lg+) ── */}
-        <div className="hidden lg:block">
-          <div ref={wrapperRef} className="relative">
-            {/* SVG lines layer — sits above cards */}
-            {svgSize.w > 0 && (
-              <svg
-                className="absolute inset-0 pointer-events-none z-20"
-                width={svgSize.w}
-                height={svgSize.h}
-              >
-                <defs>
-                  {/* Small circle markers for line endpoints */}
-                  <marker
-                    id="m-dot"
-                    markerWidth="8"
-                    markerHeight="8"
-                    refX="4"
-                    refY="4"
-                    orient="auto"
-                  >
-                    <circle
-                      cx="4"
-                      cy="4"
-                      r="2.5"
-                      fill="white"
-                      stroke="#94a3b8"
-                      strokeWidth="1.2"
-                    />
-                  </marker>
-                </defs>
-
+        <div ref={containerRef} className="relative mt-12 min-h-[600px] lg:min-h-0">
+          {/* Animated SVG Connections (Desktop Only) */}
+          <div className="hidden lg:block absolute inset-0 z-0">
+            <svg width={dimensions.w} height={dimensions.h} className="w-full h-full">
+              <defs>
+                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#94a3b8" stopOpacity="0.2" />
+                  <stop offset="50%" stopColor="#22d3ee" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#94a3b8" stopOpacity="0.2" />
+                </linearGradient>
+              </defs>
+              <AnimatePresence>
                 {lines.map((l, i) => (
-                  <line
-                    key={i}
-                    x1={l.x1}
-                    y1={l.y1}
-                    x2={l.x2}
-                    y2={l.y2}
-                    stroke="#94a3b8"
-                    strokeWidth="1.5"
-                    strokeDasharray="5 4"
-                    markerStart="url(#m-dot)"
-                    markerEnd="url(#m-dot)"
-                  />
+                  <g key={l.id}>
+                    <path d={l.path} fill="none" stroke="#e2e8f0" strokeWidth="2" strokeDasharray="4 4" />
+                    <motion.path
+                      d={l.path}
+                      fill="none"
+                      stroke="url(#lineGrad)"
+                      strokeWidth="3"
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      animate={{ pathLength: 1, opacity: 1 }}
+                      transition={{ duration: 1.5, delay: i * 0.1 }}
+                    />
+                    <circle r="3" fill="#0891b2">
+                      <animateMotion path={l.path} dur={`${2 + i * 0.5}s`} repeatCount="indefinite" rotate="auto" begin={`${i * 0.3}s`} />
+                    </circle>
+                  </g>
                 ))}
-              </svg>
-            )}
+              </AnimatePresence>
+            </svg>
+          </div>
 
-            {/* 3-column grid */}
-            <div className="grid grid-cols-[1fr_180px_1fr]">
-              {/* Left cards */}
-              <div className="flex flex-col gap-5 pr-10">
-                {leftFeatures.map((f, i) => (
-                  <div
-                    key={i}
-                    ref={(el) => {
-                      cardRefs.current[i] = el;
-                    }}
-                    className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-200"
-                  >
-                    {/* <div className="w-11 h-11 rounded-xl bg-[#0f1f2e] flex items-center justify-center mb-3">
-                      {f.icon}
-                    </div> */}
-                    <motion.div
-                      className="w-11 h-11 rounded-xl bg-[#0f1f2e] flex items-center justify-center mb-3"
-                      initial={{ rotate: 0 }}
-                      whileInView={{ rotate: 360 }}
-                      transition={{ duration: 0.8, ease: "easeInOut" }}
-                      viewport={{ once: false, amount: 0.5 }}
-                    >
-                      {f.icon}
-                    </motion.div>
-                    <h3 className="text-[15px] font-bold text-slate-800 mb-1.5 leading-snug">
-                      {f.title}
-                    </h3>
-                    <p className="text-[13px] text-slate-500 leading-relaxed">
-                      {f.description}
-                    </p>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px_1fr] items-center relative z-10 gap-8 lg:gap-0">
+            {/* Left Column Features */}
+            <div className="flex flex-col gap-8 lg:pr-12 order-2 lg:order-1">
+              {/* <div className="lg:hidden text-xs font-bold text-slate-400 uppercase tracking-widest text-center mb-2">Automated Requests</div> */}
+              {featuresEnhanced.filter(f => f.side === "left").map((f, i) => (
+                <motion.div
+                  key={i}
+                  ref={(el) => { cardRefs.current[i] = el; }}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="bg-white rounded-[32px] p-6 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-slate-100 group transition-all"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-slate-200">
+                    {f.icon}
                   </div>
-                ))}
-              </div>
+                  <h3 className="text-xl font-bold text-slate-800 mb-2 leading-tight">{f.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed font-medium">{f.description}</p>
+                </motion.div>
+              ))}
+            </div>
 
-              {/* Center — Peoplix box vertically centered */}
-              <div className="flex items-center justify-center z-100">
-                <div ref={centerRef}>
-                  <PeoplixCenterBox />
-                </div>
+            {/* Center Core */}
+            <div className="flex flex-col items-center justify-center relative order-1 lg:order-2">
+              <div ref={centerRef}>
+                <PeoplixCenterBoxEnhanced />
               </div>
+              {/* <div className="hidden lg:block absolute -top-12 text-[10px] font-black text-cyan-500/60 uppercase tracking-[0.3em] font-mono">Autonomous Core</div> */}
+            </div>
 
-              {/* Right cards */}
-              <div className="flex flex-col gap-5 pl-10">
-                {rightFeatures.map((f, i) => (
-                  <div
-                    key={i}
-                    ref={(el) => {
-                      cardRefs.current[i + 3] = el;
-                    }}
-                    className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-200"
-                  >
-                    {/* <div className="w-11 h-11 rounded-xl bg-[#0f1f2e] flex items-center justify-center mb-3">
-                      {f.icon}
-                    </div> */}
-                    <motion.div
-                      className="w-11 h-11 rounded-xl bg-[#0f1f2e] flex items-center justify-center mb-3"
-                      initial={{ rotate: 0 }}
-                      whileInView={{ rotate: 360 }}
-                      transition={{ duration: 0.8, ease: "easeInOut" }}
-                      viewport={{ once: false, amount: 0.5 }}
-                    >
-                      {f.icon}
-                    </motion.div>
-                    <h3 className="text-[15px] font-bold text-slate-800 mb-1.5 leading-snug">
-                      {f.title}
-                    </h3>
-                    <p className="text-[13px] text-slate-500 leading-relaxed">
-                      {f.description}
-                    </p>
+            {/* Right Column Features */}
+            <div className="flex flex-col gap-8 lg:pl-12 order-3 lg:order-3">
+              {/* <div className="lg:hidden text-xs font-bold text-slate-400 uppercase tracking-widest text-center mb-2">System Actions</div> */}
+              {featuresEnhanced.filter(f => f.side === "right").map((f, i) => (
+                <motion.div
+                  key={i}
+                  ref={(el) => { cardRefs.current[i + 3] = el; }}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="bg-white rounded-[32px] p-6 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-slate-100 group transition-all"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-slate-200">
+                    {f.icon}
                   </div>
-                ))}
-              </div>
+                  <h3 className="text-xl font-bold text-slate-800 mb-2 leading-tight">{f.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed font-medium">{f.description}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
+      </div>
 
-        {/* ── Mobile / Tablet ── */}
-        <div className="lg:hidden flex flex-col items-center gap-8">
-          <PeoplixCenterBox />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-            {features.map((f, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100"
-              >
-                <div className="w-11 h-11 rounded-xl bg-[#0f1f2e] flex items-center justify-center mb-3">
-                  {f.icon}
-                </div>
-                <h3 className="text-[15px] font-bold text-slate-800 mb-1.5 leading-snug">
-                  {f.title}
-                </h3>
-                <p className="text-[13px] text-slate-500 leading-relaxed">
-                  {f.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40">
+        <div className="absolute top-[10%] left-[5%] w-72 h-72 bg-cyan-100 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[10%] right-[5%] w-96 h-96 bg-blue-50 rounded-full blur-[100px]" />
       </div>
     </section>
   );

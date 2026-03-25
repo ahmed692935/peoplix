@@ -1,13 +1,14 @@
-import BookDemo from "../components/LandingPageComponents/BookDemo";
-import BusinessImpact from "../components/LandingPageComponents/BuisnessValue";
-import Faqs from "../components/LandingPageComponents/Faqs";
-import Features from "../components/LandingPageComponents/Features";
-import Footer from "../components/LandingPageComponents/Footer";
-import HeroSection from "../components/LandingPageComponents/HeroSection";
-import HowItWorks from "../components/LandingPageComponents/HowItWorks";
-import Solution from "../components/LandingPageComponents/Solution";
-import TheProblem from "../components/LandingPageComponents/TheProblem";
-import WhoItsFor from "../components/LandingPageComponents/WhoItFor";
+import { lazy } from "react";
+const BookDemo = lazy(() => import("../components/LandingPageComponents/BookDemo"));
+const BusinessImpact = lazy(() => import("../components/LandingPageComponents/BuisnessValue"));
+const Faqs = lazy(() => import("../components/LandingPageComponents/Faqs"));
+const Features = lazy(() => import("../components/LandingPageComponents/Features"));
+const Footer = lazy(() => import("../components/LandingPageComponents/Footer"));
+const HeroSection = lazy(() => import("../components/LandingPageComponents/HeroSection"));
+const HowItWorks = lazy(() => import("../components/LandingPageComponents/HowItWorks"));
+const Solution = lazy(() => import("../components/LandingPageComponents/Solution"));
+const TheProblem = lazy(() => import("../components/LandingPageComponents/TheProblem"));
+const WhoItsFor = lazy(() => import("../components/LandingPageComponents/WhoItFor"));
 
 const LandingPage = () => {
   return (
