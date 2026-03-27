@@ -140,17 +140,6 @@ const LoginPage = () => {
               </div>
             </div>
 
-            {/* Forgot Password */}
-            {/* <div className="text-right mb-6">
-            <button className="text-sm text-gray-500 hover:underline">
-              Forgot password?
-            </button>
-          </div> */}
-
-            {/* Login Button */}
-            {/* <button className="w-full py-3 rounded-full bg-gradient-to-r from-[#0F172A] to-[#080808] cursor-pointer text-white font-medium shadow-lg hover:opacity-90 transition">
-            Log In
-          </button> */}
             <button
               className="w-full mt-10 py-3 rounded-full 
 bg-linear-to-r from-[#0F172A] to-[#080808] 
@@ -162,27 +151,6 @@ transition-all duration-300"
               {loading ? "Logging in..." : "Log In"}
             </button>
           </form>
-
-          {/* Signup */}
-          {/* <p className="text-center text-sm text-gray-900 mt-6">
-            Haven’t got an account?{" "}
-            <span className="font-semibold underline cursor-pointer">
-              Sign up
-            </span>
-          </p> */}
-
-          {/* Terms */}
-          {/* <p className="text-sm text-gray-900 text-center mt-10">
-            By Logging in, you agree to our{" "}
-            <span className="underline cursor-pointer font-bold text-black">
-              Terms of Service
-            </span>{" "}
-            and{" "}
-            <span className="underline cursor-pointer font-bold text-black">
-              Privacy policy
-            </span>
-            .
-          </p> */}
         </div>
       </div>
     </div>
