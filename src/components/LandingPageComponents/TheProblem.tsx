@@ -52,18 +52,21 @@ const TheProblem = () => {
           }}
         >
           {/* Main Top Radial Glow */}
-          <div 
+          {/* style={{
+            background: "radial-gradient(circle at 50% 0%, rgba(222,243,22,0.12) 0%, rgba(222,243,22,0.03) 40%, transparent 70%)"
+              }} */}
+          <div
             className="absolute inset-x-0 top-0 h-[150%] pointer-events-none"
             style={{
-              background: "radial-gradient(circle at 50% 0%, rgba(222,243,22,0.12) 0%, rgba(222,243,22,0.03) 40%, transparent 70%)"
+              background: "radial-gradient(circle at 50% 0%, rgba(55,114,255,0.12) 0%, rgba(55,114,255,0.03) 40%, transparent 70%)"
             }}
           />
-          
+
           {/* Secondary Bottom Glow */}
-          <div 
+          <div
             className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none opacity-50"
             style={{
-              background: "radial-gradient(circle at 50% 100%, rgba(222,243,22,0.08) 0%, transparent 70%)"
+              background: "radial-gradient(circle at 50% 100%, rgba(55,114,255,0.08) 0%, transparent 70%)"
             }}
           />
 

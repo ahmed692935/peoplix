@@ -224,10 +224,11 @@ const Navbar = () => {
           </div>
         ) : (
           // ── Not Logged In: Login Button ──
+          // shadow-[0_8px_15px_rgba(222,243,22,0.2)]
           <button
             onClick={() => navigate("/signin")}
-            className="bg-primary text-black px-6 py-2 font-bold cursor-pointer rounded-full
-              shadow-[0_8px_15px_rgba(222,243,22,0.2)] hover:scale-105 transition-transform"
+            className="bg-primary text-white px-6 py-2 font-bold cursor-pointer rounded-full
+              shadow-[0_0_20px_rgba(55,114,255,0.3)] hover:scale-105 transition-transform"
           >
             Login
           </button>

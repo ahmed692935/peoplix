@@ -121,7 +121,7 @@ text-primary"
 
         {/* Buttons */}
         <div className="mt-8 flex gap-4">
-          <button className="relative px-8 py-3 bg-primary text-black font-bold rounded-full shadow-[0_0_20px_rgba(222,243,22,0.3)] cursor-pointer hover:scale-105 transition-transform">
+          <button className="relative px-8 py-3 bg-primary text-white font-bold rounded-full shadow-[0_0_20px_rgba(55,114,255,0.3)] cursor-pointer hover:scale-105 transition-transform">
             Book a Demo
           </button>
           <button className="px-8 py-3 cursor-pointer border border-divider bg-dark-gray text-white rounded-full hover:bg-divider transition">

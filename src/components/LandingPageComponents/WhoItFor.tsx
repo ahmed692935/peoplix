@@ -204,7 +204,7 @@ const WhoItsFor = () => {
         </ul>
 
         {/* CTA Button */}
-        <button className="relative px-8 py-3 bg-primary text-black font-bold rounded-full shadow-[0_8px_15px_rgba(222,243,22,0.3)] cursor-pointer hover:scale-105 transition-transform">
+        <button className="relative px-8 py-3 bg-primary text-white font-bold rounded-full shadow-[0_8px_15px_rgba(55,114,255,0.3)] cursor-pointer hover:scale-105 transition-transform">
           Close Strong
         </button>
       </div>
