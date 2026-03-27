@@ -14,7 +14,7 @@ const BookDemo = () => {
         <div 
           className="absolute inset-x-0 top-0 h-[150%] pointer-events-none"
           style={{
-            background: "radial-gradient(circle at 50% 0%, rgba(222,243,22,0.12) 0%, rgba(222,243,22,0.03) 40%, transparent 70%)"
+            background: "radial-gradient(circle at 50% 0%, rgba(55,114,255,0.12) 0%, rgba(55,114,255,0.03) 40%, transparent 70%)"
           }}
         />
         
@@ -22,7 +22,7 @@ const BookDemo = () => {
         <div 
           className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none opacity-50"
           style={{
-            background: "radial-gradient(circle at 50% 100%, rgba(222,243,22,0.08) 0%, transparent 70%)"
+            background: "radial-gradient(circle at 50% 100%, rgba(55,114,255,0.08) 0%, transparent 70%)"
           }}
         />
         
@@ -50,7 +50,7 @@ const BookDemo = () => {
 
         {/* Button */}
         <button className="inline-flex mt-10 cursor-pointer items-center gap-2 bg-primary px-8 py-3 rounded-full shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
-          <span className="text-sm text-black font-bold tracking-wide">
+          <span className="text-sm text-white font-bold tracking-wide">
             Book a Demo
           </span>
         </button>

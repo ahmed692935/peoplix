@@ -103,7 +103,7 @@ text-white pb-4"
                       <div 
                         className="absolute inset-0 pointer-events-none"
                         style={{
-                          background: "radial-gradient(circle at 20% 0%, rgba(222,243,22,0.1) 0%, transparent 70%)"
+                          background: "radial-gradient(circle at 20% 0%, rgba(55,114,255,0.1) 0%, transparent 70%)"
                         }}
                       />
                     </div>

@@ -897,7 +897,7 @@ const WhatPeoplixCanAutomate = () => {
               <defs>
                 <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#2A2A2A" stopOpacity="0.2" />
-                  <stop offset="50%" stopColor="#DEF316" stopOpacity="0.5" />
+                  <stop offset="50%" stopColor="#3772ff" stopOpacity="0.5" />
                   <stop offset="100%" stopColor="#2A2A2A" stopOpacity="0.2" />
                 </linearGradient>
               </defs>
@@ -914,7 +914,7 @@ const WhatPeoplixCanAutomate = () => {
                       animate={{ pathLength: 1, opacity: 1 }}
                       transition={{ duration: 1.5, delay: i * 0.1 }}
                     />
-                    <circle r="3" fill="#DEF316">
+                    <circle r="3" fill="#3772ff">
                       <animateMotion path={l.path} dur={`${2 + i * 0.5}s`} repeatCount="indefinite" rotate="auto" begin={`${i * 0.3}s`} />
                     </circle>
                   </g>

@@ -158,7 +158,7 @@ const BusinessImpact = () => {
           <div 
             className="absolute inset-x-0 top-0 h-[120%] pointer-events-none"
             style={{
-              background: "radial-gradient(circle at 50% 0%, rgba(222,243,22,0.1) 0%, rgba(222,243,22,0.02) 40%, transparent 70%)"
+              background: "radial-gradient(circle at 50% 0%, rgba(55,114,255,0.1) 0%, rgba(55,114,255,0.02) 40%, transparent 70%)"
             }}
           />
           
@@ -166,7 +166,7 @@ const BusinessImpact = () => {
           <div 
             className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none opacity-50"
             style={{
-              background: "radial-gradient(circle at 50% 100%, rgba(222,243,22,0.05) 0%, transparent 70%)"
+              background: "radial-gradient(circle at 50% 100%, rgba(55,114,255,0.05) 0%, transparent 70%)"
             }}
           />
           
