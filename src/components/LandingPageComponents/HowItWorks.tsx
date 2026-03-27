@@ -84,14 +84,14 @@ const HowItWorks = () => {
       <div className="mx-auto grid grid-cols-1 lg:grid-cols-[40%_60%] gap-10 items-center">
         {/* ── Left Side ── */}
         <div className="lg:pr-6">
-          <div className="bg-[#F5F5F5] px-3 py-1 rounded-lg shadow-[0_6px_12px_rgba(0,0,0,0.35)] flex gap-1 items-center max-w-[130px]">
-            <GoDotFill className="text-[#22D3EE] mt-[2px]" />
-            <span className="text-sm text-[#22D3EE] font-semibold">
+          <div className="bg-dark-gray px-3 py-1 rounded-lg border border-divider flex gap-1 items-center max-w-[130px]">
+            <GoDotFill className="text-primary mt-[2px]" />
+            <span className="text-sm text-primary font-semibold">
               How it Works
             </span>
           </div>
 
-          <h2 className="mt-8 tracking-tighter text-3xl sm:text-5xl lg:text-[64px] lg:leading-[1.1] font-semibold bg-linear-to-b from-[#61666A] to-[#292C2E] bg-clip-text text-transparent">
+          <h2 className="mt-8 tracking-tighter text-3xl sm:text-5xl lg:text-[64px] lg:leading-[1.1] font-semibold text-white">
             Build for Enterprise Operations
           </h2>
 
@@ -103,8 +103,8 @@ const HowItWorks = () => {
               className={`p-3 rounded-full transition cursor-pointer 
                 ${
                   active === 0
-                    ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                    : "bg-linear-to-b from-[#61666A] to-[#292C2E] text-white hover:opacity-80"
+                    ? "bg-divider text-text-gray cursor-not-allowed"
+                    : "bg-primary text-black hover:scale-110 shadow-lg shadow-primary/20"
                 }`}
             >
               <FiArrowLeft />
@@ -113,11 +113,11 @@ const HowItWorks = () => {
             <button
               onClick={next}
               disabled={active === cards.length - 1}
-              className={`p-3 rounded-full transition cursor-pointer shadow-xl
+              className={`p-3 rounded-full transition cursor-pointer
                 ${
                   active === cards.length - 1
-                    ? "bg-gray-100 text-gray-300 cursor-not-allowed"
-                    : "bg-gray-200 hover:bg-gray-300 text-gray-800"
+                    ? "bg-divider text-text-gray cursor-not-allowed"
+                    : "bg-primary text-black hover:scale-110 shadow-lg shadow-primary/20"
                 }`}
             >
               <FiArrowRight />
@@ -155,41 +155,41 @@ const HowItWorks = () => {
                 <div
                   key={index}
                   ref={index === 0 ? cardRef : null}
-                  className="shrink-0 w-[min(320px,80vw)] sm:w-72 lg:w-80 xl:w-[420px] h-[450px] mr-6 bg-gray-100 rounded-3xl p-8 relative "
+                  className="shrink-0 w-[min(320px,80vw)] sm:w-72 lg:w-80 xl:w-[420px] h-[450px] mr-6 bg-dark-gray border border-divider rounded-3xl p-8 relative"
                 >
                   {/* ── Glow Box with Icon ── */}
                   <div className="relative mb-6 w-14 h-14">
                     {/* Dark base */}
-                    <div className="absolute inset-0 bg-[#004C57] rounded-xl" />
+                    <div className="absolute inset-0 bg-background rounded-xl border border-divider" />
 
                     {/* Bottom glow */}
                     <div
                       className="absolute -bottom-4 -left-3 -right-3 h-10 
-                  bg-linear-to-t from-[#22D3EE]/90 to-transparent 
+                  bg-linear-to-t from-primary/50 to-transparent 
                   rounded-2xl blur-xl opacity-90"
                     />
 
                     {/* Icon */}
                     <div className="absolute inset-0 flex items-center justify-center z-10">
-                      <Icon className="text-white text-xl" />
+                      <Icon className="text-primary text-xl" />
                     </div>
                   </div>
 
                   {/* Heading */}
-                  <h3 className="text-3xl font-semibold mb-4">{card.title}</h3>
+                  <h3 className="text-3xl font-semibold mb-4 text-white">{card.title}</h3>
 
                   {/* Divider */}
-                  <div className="h-px w-full bg-linear-to-r from-transparent via-gray-300 to-transparent mb-4" />
+                  <div className="h-px w-full bg-linear-to-r from-transparent via-divider to-transparent mb-4" />
 
                   {/* Content */}
-                  <p className="text-gray-600 text-lg">{card.content}</p>
+                  <p className="text-text-gray text-lg">{card.content}</p>
 
                   {/* Counter */}
                   <div className="absolute bottom-6 right-8 font-semibold text-3xl">
-                    <span className="text-gray-400">
+                    <span className="text-text-gray">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-gray-300">
+                    <span className="text-divider">
                       /{String(cards.length).padStart(2, "0")}
                     </span>
                   </div>
@@ -199,7 +199,7 @@ const HowItWorks = () => {
           </motion.div>
 
           {/* Right fade — shows peek of next card */}
-          <div className="absolute top-0 right-0 h-full w-16 bg-linear-to-l from-white to-transparent pointer-events-none z-10" />
+          <div className="absolute top-0 right-0 h-full w-16 bg-linear-to-l from-background to-transparent pointer-events-none z-10" />
         </div>
       </div>
     </div>

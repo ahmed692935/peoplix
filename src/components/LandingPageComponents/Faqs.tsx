@@ -64,7 +64,7 @@ const AccordionItem = ({
 }: AccordionItemProps) => {
   return (
     <div
-      className="bg-white rounded-2xl shadow-sm border border-white/80 overflow-hidden"
+      className="bg-dark-gray rounded-2xl shadow-sm border border-divider overflow-hidden"
       style={{
         animationDelay: `${index * 80}ms`,
       }}
@@ -74,7 +74,7 @@ const AccordionItem = ({
         className="w-full flex items-center justify-between px-7 py-5 text-left group"
         aria-expanded={isOpen}
       >
-        <span className="text-base font-semibold text-[#09090B] leading-snug pr-6">
+        <span className="text-base font-semibold text-white leading-snug pr-6 group-hover:text-primary transition-colors">
           {item.question}
         </span>
 
@@ -83,11 +83,7 @@ const AccordionItem = ({
           className={`
             shrink-0 w-9 h-9 rounded-full flex items-center justify-center
             transition-all duration-300 ease-out
-            ${
-              isOpen
-                ? "bg-gradient-to-b from-[#61666A] to-[#292C2E] text-white hover:opacity-80 rotate-0 cursor-pointer"
-                : "bg-gradient-to-b from-[#61666A] to-[#292C2E] text-white hover:opacity-80 cursor-pointer"
-            }
+            bg-primary text-black hover:scale-110 cursor-pointer
           `}
         >
           <svg
@@ -102,7 +98,7 @@ const AccordionItem = ({
               y1="1"
               x2="7"
               y2="13"
-              stroke="white"
+              stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
             />
@@ -111,7 +107,7 @@ const AccordionItem = ({
               y1="7"
               x2="13"
               y2="7"
-              stroke="white"
+              stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
             />
@@ -127,7 +123,7 @@ const AccordionItem = ({
           opacity: isOpen ? 1 : 0,
         }}
       >
-        <p className="px-7 pb-6 text-[14px] text-[#09090B] leading-relaxed">
+        <p className="px-7 pb-6 text-[14px] text-text-gray leading-relaxed">
           {item.answer}
         </p>
       </div>
@@ -148,14 +144,14 @@ const FAQSection = () => {
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="text-center items-center flex flex-col justify-center mb-14">
-            <div className="bg-[#F5F5F5] mb-10 px-3 py-1 rounded-lg shadow-[0_6px_12px_rgba(0,0,0,0.35)] flex gap-1 justify-center items-center max-w-[110px]">
-              <GoDotFill className="text-[#22D3EE] mt-[2px]" />
-              <span className="text-sm text-[#22D3EE] font-semibold">
+            <div className="bg-dark-gray mb-10 px-3 py-1 rounded-lg border border-divider flex gap-1 justify-center items-center max-w-[110px]">
+              <GoDotFill className="text-primary mt-[2px]" />
+              <span className="text-sm text-primary font-semibold">
                 FAQ's
               </span>
             </div>
 
-            <h2 className="text-[52px] font-semibold tracking-tighter leading-tight bg-gradient-to-b from-[#61666A] to-[#292C2E] bg-clip-text text-transparent">
+            <h2 className="text-[52px] font-semibold tracking-tighter leading-tight text-white">
               Frequently Asked
               <br />
               Questions
