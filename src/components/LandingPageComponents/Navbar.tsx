@@ -84,7 +84,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="max-w-3xl w-full bg-white shadow-[0_4px_10px_rgba(0,0,0,0.5)] rounded-full">
+    <div className="max-w-3xl w-full bg-dark-gray/80 backdrop-blur-md border border-divider shadow-[0_4px_20px_rgba(0,0,0,0.5)] rounded-full">
       <div className="flex items-center justify-between py-2 px-2">
         {/* Left - Logo */}
         <div className="flex items-center gap-2 pl-4">
@@ -116,8 +116,8 @@ const Navbar = () => {
               }}
               className={`cursor-pointer pb-1 transition-all duration-300 ${
                 active === link
-                  ? "text-[#1DBED6] border-b-2 font-semibold border-[#1DBED6]"
-                  : "text-black font-semibold hover:text-[#1DBED6]"
+                  ? "text-primary border-b-2 font-semibold border-primary"
+                  : "text-white font-semibold hover:text-primary"
               }`}
             >
               {link}
@@ -139,10 +139,10 @@ const Navbar = () => {
               </div>
               {/* Email + Role */}
               <div className="hidden sm:block text-left">
-                <p className="text-xs font-semibold text-gray-800 leading-tight max-w-[120px] truncate">
+                <p className="text-xs font-semibold text-white leading-tight max-w-[120px] truncate">
                   {storedUser.email}
                 </p>
-                <p className="text-[10px] text-gray-400 capitalize">
+                <p className="text-[10px] text-text-gray capitalize">
                   {storedUser.role}
                 </p>
               </div>
@@ -226,8 +226,8 @@ const Navbar = () => {
           // ── Not Logged In: Login Button ──
           <button
             onClick={() => navigate("/signin")}
-            className="bg-[#0B1023] text-white px-5 py-2 cursor-pointer rounded-full
-              shadow-[0_8px_15px_rgba(0,0,0,0.35)] hover:bg-gray-800 transition"
+            className="bg-primary text-black px-6 py-2 font-bold cursor-pointer rounded-full
+              shadow-[0_8px_15px_rgba(222,243,22,0.2)] hover:scale-105 transition-transform"
           >
             Login
           </button>

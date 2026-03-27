@@ -12,18 +12,18 @@ const WhoItsFor = lazy(() => import("../components/LandingPageComponents/WhoItFo
 
 const LandingPage = () => {
   return (
-    <div className="p-3 bg-gray-100">
+    <div className="bg-background text-white">
       <HeroSection />
       <div id="problem">
         <TheProblem />
       </div>
-      <div className="bg-white rounded-t-[40px] py-16 px-6 lg:px-16">
+      <div className="py-16 px-6 lg:px-16 border-t border-divider">
         <div id="solution">
           <Solution />
         </div>
         <Features />
       </div>
-      <div className="bg-white rounded-b-[40px] pb-20">
+      <div className="pb-20 border-b border-divider">
         <HowItWorks />
       </div>
       <div id="company">

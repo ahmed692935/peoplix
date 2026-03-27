@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { GoDotFill } from "react-icons/go";
-import ActiveBg from "../../assets/images/cardBg.png";
 
 const services = [
   {
@@ -53,9 +52,9 @@ const Solution = () => {
         {/* ───── LEFT – Static Content ───── */}
         <div className="lg:sticky lg:top-20">
           {/* Badge */}
-          <div className="bg-[#F5F5F5] px-3 py-1 rounded-lg shadow-[0_6px_12px_rgba(0,0,0,0.35)] flex gap-1 items-center max-w-[110px]">
-            <GoDotFill className="text-[#22D3EE] mt-[2px]" />
-            <span className="text-sm text-[#22D3EE] font-semibold">
+          <div className="bg-dark-gray px-3 py-1 rounded-lg border border-divider flex gap-1 items-center max-w-[110px]">
+            <GoDotFill className="text-primary mt-[2px]" />
+            <span className="text-sm text-primary font-semibold">
               Solution
             </span>
           </div>
@@ -63,14 +62,13 @@ const Solution = () => {
           {/* Heading */}
           <h2
             className="max-w-3xl mt-10 tracking-tighter md:leading-[1.1] text-3xl lg:text-[72px] font-semibold
-bg-linear-to-b from-[#61666A] to-[#292C2E]
-bg-clip-text text-transparent pb-4"
+text-white pb-4"
           >
             Meet Autonomous AI Agents
           </h2>
 
           {/* Description */}
-          <p className="mt-6 text-[#09090B] text-base lg:text-lg leading-relaxed lg:max-w-md">
+          <p className="mt-6 text-text-gray text-base lg:text-lg leading-relaxed lg:max-w-md">
             Peoplix agents don't just answer questions. They understand, decide,
             and act — resolving employee requests end-to-end without human
             involvement.
@@ -88,26 +86,34 @@ bg-clip-text text-transparent pb-4"
                 onClick={() => setActiveId(service.id)}
                 className={`cursor-pointer rounded-2xl transition-all duration-500 overflow-hidden
                   ${isActive
-                    ? //   ? "bg-[#1a1f2e] text-white shadow-xl"
-                    "relative text-white shadow-xl"
-                    : "bg-[#F5F5F7] text-[#6B7280] hover:bg-[#EBEBED]"
+                    ? "relative text-white shadow-xl border border-primary/30"
+                    : "bg-dark-gray text-text-gray hover:bg-divider border border-transparent"
                   }`}
               >
                 {isActive && (
                   <>
-                    {/* Background Image */}
-                    <img
-                      src={ActiveBg}
-                      alt="Background"
-                      className="absolute inset-0 w-full h-full object-cover rounded-2xl"
-                    />
+                    {/* Background Gradient & Glow */}
+                    <div
+                      className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden"
+                      style={{
+                        background: "#080808",
+                      }}
+                    >
+                      {/* Radial glow effect */}
+                      <div 
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                          background: "radial-gradient(circle at 20% 0%, rgba(222,243,22,0.1) 0%, transparent 70%)"
+                        }}
+                      />
+                    </div>
                   </>
                 )}
                 {/* Header Row */}
                 <div className="relative z-10 flex items-center justify-between px-6 py-5">
                   <h3
                     className={`text-lg sm:text-2xl font-semibold tracking-tight transition-colors duration-300
-                      ${isActive ? "text-white" : "text-[#6B7280]"}`}
+                      ${isActive ? "text-primary" : "text-text-gray"}`}
                   >
                     {service.title}
                   </h3>
@@ -129,7 +135,7 @@ bg-clip-text text-transparent pb-4"
                       {service.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-4 py-1.5 rounded-full border border-gray-500 text-gray-200 text-xs sm:text-sm"
+                          className="px-4 py-1.5 rounded-full border border-divider text-text-gray text-xs sm:text-sm"
                         >
                           {tag}
                         </span>

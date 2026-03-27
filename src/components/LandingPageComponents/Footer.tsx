@@ -20,8 +20,8 @@ const FooterSection = () => {
           font-weight: 700;
           letter-spacing: 0.18em;
           color: transparent;
-          -webkit-text-stroke: 1.5px #d1d5db;
-          text-stroke: 1.5px #d1d5db;
+          -webkit-text-stroke: 1.5px rgba(255,255,255,0.05);
+          text-stroke: 1.5px rgba(255,255,255,0.05);
           white-space: nowrap;
           pointer-events: none;
           user-select: none;
@@ -32,35 +32,36 @@ const FooterSection = () => {
           width: 72px;
           height: 72px;
           border-radius: 18px;
-          background: linear-gradient(145deg, #0f4f5c 0%, #0d6a7a 40%, #0891b2 100%);
+          background: #0A0A0A;
+          border: 1px solid var(--color-divider);
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 8px 24px rgba(8,145,178,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+          box-shadow: 0 8px 24px rgba(222,243,22,0.1), inset 0 1px 0 rgba(255,255,255,0.1);
           flex-shrink: 0;
           margin-bottom: 24px;
         }
 
         .footer-link {
-          color: #64748b;
+          color: var(--color-text-gray);
           font-size: 14px;
           font-weight: 400;
           text-decoration: none;
           transition: color 0.15s ease;
           line-height: 1;
         }
-        .footer-link:hover { color: #1e293b; }
+        .footer-link:hover { color: var(--color-primary); }
 
         .footer-col-heading {
           font-size: 14px;
           font-weight: 600;
-          color: #1e293b;
+          color: #ffffff;
           margin: 0 0 20px 0;
         }
 
         .footer-divider {
           border: none;
-          border-top: 1px solid #d1d5db;
+          border-top: 1px solid var(--color-divider);
           margin-bottom: 24px;
         }
 
@@ -70,7 +71,7 @@ const FooterSection = () => {
           gap: 6px;
           font-size: 14px;
           font-weight: 500;
-          color: #1e293b;
+          color: #ffffff;
           background: none;
           border: none;
           cursor: pointer;
@@ -85,11 +86,11 @@ const FooterSection = () => {
           inset: 0;
           background: linear-gradient(
             to top,
-            rgba(255,255,255,1) 20%,
-            rgba(255,255,255,0.95) 45%,
-            rgba(255,255,255,0.6) 70%,
-            rgba(255,255,255,0.2) 75%,
-            rgba(255,255,255,0) 100%
+            rgba(10,10,10,1) 20%,
+            rgba(10,10,10,0.95) 45%,
+            rgba(10,10,10,0.6) 70%,
+            rgba(10,10,10,0.2) 75%,
+            rgba(10,10,10,0) 100%
           );
           pointer-events: none;
         }
@@ -119,7 +120,7 @@ const FooterSection = () => {
         .footer-brand-desc {
           font-size: 14px;
           line-height: 1.75;
-          color: #64748b;
+          color: var(--color-text-gray);
           font-weight: 400;
           margin: 0;
         }
@@ -155,7 +156,7 @@ const FooterSection = () => {
 
         .footer-copyright {
           font-size: 13px;
-          color: #94a3b8;
+          color: var(--color-text-gray);
           margin: 0;
           font-weight: 400;
         }

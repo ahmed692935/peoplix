@@ -723,12 +723,12 @@ const PeoplixCenterBoxEnhanced = () => (
   <div className="flex flex-col items-center group">
     <div className="relative">
       <motion.div
-        className="absolute inset-0 bg-cyan-400 blur-2xl opacity-40 rounded-full"
+        className="absolute inset-0 bg-primary blur-2xl opacity-40 rounded-full"
         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 4, repeat: Infinity }}
       />
       <motion.div
-        className="absolute inset-0 bg-cyan-300 blur-[80px] opacity-20 rounded-full"
+        className="absolute inset-0 bg-primary/30 blur-[80px] opacity-20 rounded-full"
         animate={{ scale: [1, 1.4, 1] }}
         transition={{ duration: 6, repeat: Infinity }}
       />
@@ -737,7 +737,7 @@ const PeoplixCenterBoxEnhanced = () => (
         whileHover={{ scale: 1.05 }}
         className="w-[140px] h-[140px] rounded-[32px] flex flex-col items-center justify-center gap-3 relative z-10 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden"
         style={{
-          background: "linear-gradient(145deg, rgba(14, 116, 144, 0.9) 0%, rgba(8, 145, 178, 0.8) 50%, rgba(34, 211, 238, 0.7) 100%)",
+          background: "linear-gradient(145deg, #0A0A0A 0%, #1A1A1A 50%, #2A2A2A 100%)",
         }}
       >
         <div className="absolute inset-0 bg-linear-to-br from-white/10 to-transparent pointer-events-none" />
@@ -746,7 +746,7 @@ const PeoplixCenterBoxEnhanced = () => (
           Peoplix
         </span>
         <motion.div
-          className="absolute top-0 left-0 w-full h-[2px] bg-cyan-200/50 blur-[2px]"
+          className="absolute top-0 left-0 w-full h-[2px] bg-primary/50 blur-[2px]"
           animate={{ top: ["0%", "100%", "0%"] }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
         />
@@ -754,7 +754,7 @@ const PeoplixCenterBoxEnhanced = () => (
     </div>
 
     <motion.div
-      className="w-24 h-4 bg-cyan-500/20 blur-md rounded-[100%] mt-4"
+      className="w-24 h-4 bg-primary/20 blur-md rounded-[100%] mt-4"
       animate={{ width: ["80%", "110%", "80%"], opacity: [0.4, 0.6, 0.4] }}
       transition={{ duration: 4, repeat: Infinity }}
     />
@@ -869,23 +869,23 @@ const WhatPeoplixCanAutomate = () => {
   }, [calculatePaths]);
 
   return (
-    <section className="py-24 px-4 sm:px-6 relative overflow-hidden bg-slate-50/50">
+    <section className="py-24 px-4 sm:px-6 relative overflow-hidden bg-background">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-20 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-2xl px-5 py-2 mb-8 shadow-sm"
+            className="inline-flex items-center gap-2 bg-dark-gray border border-divider rounded-2xl px-5 py-2 mb-8"
           >
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-            <span className="text-sm font-bold text-cyan-500 tracking-wider uppercase">Capabilities</span>
+            <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
+            <span className="text-sm font-bold text-primary tracking-wider uppercase">Capabilities</span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-6 shadow-sm">
-            What Peoplix Can <span className="bg-linear-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent italic">Automate</span>
+          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-6">
+            What Peoplix Can <span className="text-primary italic">Automate</span>
           </h2>
 
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-text-gray max-w-2xl mx-auto leading-relaxed">
             Eliminate repetitive tasks and resolve employee requests end-to-end with autonomous AI agents.
           </p>
         </div>
@@ -896,9 +896,9 @@ const WhatPeoplixCanAutomate = () => {
             <svg width={dimensions.w} height={dimensions.h} className="w-full h-full">
               <defs>
                 <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#94a3b8" stopOpacity="0.2" />
-                  <stop offset="50%" stopColor="#22d3ee" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="#94a3b8" stopOpacity="0.2" />
+                  <stop offset="0%" stopColor="#2A2A2A" stopOpacity="0.2" />
+                  <stop offset="50%" stopColor="#DEF316" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#2A2A2A" stopOpacity="0.2" />
                 </linearGradient>
               </defs>
               <AnimatePresence>
@@ -914,7 +914,7 @@ const WhatPeoplixCanAutomate = () => {
                       animate={{ pathLength: 1, opacity: 1 }}
                       transition={{ duration: 1.5, delay: i * 0.1 }}
                     />
-                    <circle r="3" fill="#0891b2">
+                    <circle r="3" fill="#DEF316">
                       <animateMotion path={l.path} dur={`${2 + i * 0.5}s`} repeatCount="indefinite" rotate="auto" begin={`${i * 0.3}s`} />
                     </circle>
                   </g>
@@ -934,13 +934,13 @@ const WhatPeoplixCanAutomate = () => {
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className="bg-white rounded-[32px] p-6 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-slate-100 group transition-all"
+                  className="bg-dark-gray rounded-[32px] p-6 shadow-2xl border border-divider group transition-all"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-slate-200">
+                  <div className="w-12 h-12 rounded-2xl bg-divider text-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-black/50">
                     {f.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-800 mb-2 leading-tight">{f.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed font-medium">{f.description}</p>
+                  <h3 className="text-xl font-bold text-white mb-2 leading-tight">{f.title}</h3>
+                  <p className="text-sm text-text-gray leading-relaxed font-medium">{f.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -963,13 +963,13 @@ const WhatPeoplixCanAutomate = () => {
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className="bg-white rounded-[32px] p-6 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-slate-100 group transition-all"
+                  className="bg-dark-gray rounded-[32px] p-6 shadow-2xl border border-divider group transition-all"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-slate-200">
+                  <div className="w-12 h-12 rounded-2xl bg-divider text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-black/50">
                     {f.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-800 mb-2 leading-tight">{f.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed font-medium">{f.description}</p>
+                  <h3 className="text-xl font-bold text-white mb-2 leading-tight">{f.title}</h3>
+                  <p className="text-sm text-text-gray leading-relaxed font-medium">{f.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -979,8 +979,8 @@ const WhatPeoplixCanAutomate = () => {
 
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40">
-        <div className="absolute top-[10%] left-[5%] w-72 h-72 bg-cyan-100 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[10%] right-[5%] w-96 h-96 bg-blue-50 rounded-full blur-[100px]" />
+        <div className="absolute top-[10%] left-[5%] w-72 h-72 bg-primary/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[10%] right-[5%] w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
       </div>
     </section>
   );

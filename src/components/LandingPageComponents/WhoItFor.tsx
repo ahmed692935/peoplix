@@ -1,10 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import S1 from "../../assets/images/s1.png";
-import S2 from "../../assets/images/s2.png";
-import S3 from "../../assets/images/s3.png";
-import S4 from "../../assets/images/s4.png";
-import S5 from "../../assets/images/s5.png";
-import S6 from "../../assets/images/s6.png";
+import { FaUserTie, FaUsersGear, FaSitemap, FaBuildingShield, FaHandshake, FaChartLine } from "react-icons/fa6";
 
 interface FloatingCard {
   id: string;
@@ -23,7 +18,7 @@ const floatingCards: FloatingCard[] = [
   // LEFT side — final positions are left-side, start from center
   {
     id: "l1",
-    icon: <img src={S1} alt="icon" className="w-10 h-10 object-contain" />,
+    icon: <FaUserTie className="text-3xl text-primary" />,
     side: "left",
     finalTop: "12%",
     finalOffset: "14%",
@@ -33,7 +28,7 @@ const floatingCards: FloatingCard[] = [
   },
   {
     id: "l2",
-    icon: <img src={S2} alt="icon" className="w-10 h-10 object-contain" />,
+    icon: <FaUsersGear className="text-3xl text-primary" />,
     side: "left",
     finalTop: "38%",
     finalOffset: "7%",
@@ -43,7 +38,7 @@ const floatingCards: FloatingCard[] = [
   },
   {
     id: "l3",
-    icon: <img src={S3} alt="icon" className="w-10 h-10 object-contain" />,
+    icon: <FaSitemap className="text-3xl text-primary" />,
     side: "left",
     finalTop: "64%",
     finalOffset: "14%",
@@ -54,7 +49,7 @@ const floatingCards: FloatingCard[] = [
   // RIGHT side — final positions are right-side, start from center
   {
     id: "r1",
-    icon: <img src={S4} alt="icon" className="w-10 h-10 object-contain" />,
+    icon: <FaBuildingShield className="text-3xl text-primary" />,
     side: "right",
     finalTop: "10%",
     finalOffset: "14%",
@@ -64,7 +59,7 @@ const floatingCards: FloatingCard[] = [
   },
   {
     id: "r2",
-    icon: <img src={S5} alt="icon" className="w-10 h-10 object-contain" />,
+    icon: <FaHandshake className="text-3xl text-primary" />,
     side: "right",
     finalTop: "38%",
     finalOffset: "7%",
@@ -74,7 +69,7 @@ const floatingCards: FloatingCard[] = [
   },
   {
     id: "r3",
-    icon: <img src={S6} alt="icon" className="w-10 h-10 object-contain" />,
+    icon: <FaChartLine className="text-3xl text-primary" />,
     side: "right",
     finalTop: "64%",
     finalOffset: "14%",
@@ -153,13 +148,14 @@ const WhoItsFor = () => {
             className={[
               "absolute",
               "w-20 h-20",
-              "bg-white",
+              "bg-dark-gray",
               "rounded-[20px]",
               "flex items-center justify-center",
-              "shadow-[0_4px_20px_rgba(0,0,0,0.07),0_1px_4px_rgba(0,0,0,0.05)]",
+              "border border-divider",
+              "shadow-[0_4px_20px_rgba(0,0,0,0.5)]",
               "will-change-[transform,opacity,top,left,right]",
               "transition-[transform,opacity,top,left,right]",
-              "duration-[1500ms]",
+              "duration-1500",
               "ease-[cubic-bezier(0.34,1.56,0.64,1)]", // spring-like overshoot
               "max-[480px]:hidden",
               "max-[768px]:w-16 max-[768px]:h-16",
@@ -173,15 +169,15 @@ const WhoItsFor = () => {
       {/* ── Center content ── */}
       <div className="relative z-10 flex flex-col items-center text-center max-w-[800px] w-full">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-4 py-1.5 mb-6 shadow-sm">
-          <span className="w-[7px] h-[7px] rounded-xl bg-cyan-400 animate-pulse shrink-0" />
-          <span className="text-xs font-semibold text-cyan-400 tracking-wide">
+        <div className="inline-flex items-center gap-2 bg-dark-gray border border-divider rounded-xl px-4 py-1.5 mb-6 shadow-sm">
+          <span className="w-[7px] h-[7px] rounded-xl bg-primary animate-pulse shrink-0" />
+          <span className="text-xs font-semibold text-primary tracking-wide">
             Who It's For
           </span>
         </div>
 
         {/* Heading */}
-        <h2 className="font-semibold text-[#2d3748] leading-[1.15] tracking-tighter mb-7 text-[clamp(36px,6vw,64px)]">
+        <h2 className="font-semibold text-white leading-[1.15] tracking-tighter mb-7 text-[clamp(36px,6vw,64px)]">
           Built for HR Operations
           <br />
           &amp; Shared Services
@@ -199,18 +195,16 @@ const WhoItsFor = () => {
           ].map((label) => (
             <li
               key={label}
-              className="flex items-center gap-2 text-sm text-slate-500 font-semibold"
+              className="flex items-center gap-2 text-sm text-text-gray font-semibold"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-700 shrink-0 inline-block" />
+              <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 inline-block" />
               {label}
             </li>
           ))}
         </ul>
 
         {/* CTA Button */}
-        <button className="relative px-6 py-2 bg-black rounded-full shadow-[0_8px_15px_rgba(0,0,0,0.35)] cursor-pointer transition text-white overflow-hidden">
-          {/* Top Gradient Overlay */}
-          <span className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/40 to-transparent rounded-t-full text-white pointer-events-none"></span>
+        <button className="relative px-8 py-3 bg-primary text-black font-bold rounded-full shadow-[0_8px_15px_rgba(222,243,22,0.3)] cursor-pointer hover:scale-105 transition-transform">
           Close Strong
         </button>
       </div>
