@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Logo from "../../assets/images/Vector.png";
 import { loginApi } from "../../api/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const LoginPage = () => {
@@ -88,11 +88,11 @@ const LoginPage = () => {
       <div className="w-full md:w-[45%] flex items-center justify-center p-8">
         <div className="w-full max-w-md">
           {/* Logo */}
-          <div className="flex items-center gap-3 mb-12">
+          <Link to="/" className="flex items-center gap-3 mb-12">
             {/* <div className="w-8 h-8 bg-gradient-to-r from-teal-400 to-gray-400 rounded-full"></div> */}
             <img src={Logo} alt="Logo" className="mt-3 w-10" />
             <h1 className="text-4xl font-bold text-[#313538]">Peoplix</h1>
-          </div>
+          </Link>
 
           {/* Heading */}
           <h2 className="text-3xl font-extrabold text-gray-900">Log In</h2>
@@ -172,7 +172,7 @@ transition-all duration-300"
           </p> */}
 
           {/* Terms */}
-          <p className="text-sm text-gray-900 text-center mt-10">
+          {/* <p className="text-sm text-gray-900 text-center mt-10">
             By Logging in, you agree to our{" "}
             <span className="underline cursor-pointer font-bold text-black">
               Terms of Service
@@ -182,7 +182,7 @@ transition-all duration-300"
               Privacy policy
             </span>
             .
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
