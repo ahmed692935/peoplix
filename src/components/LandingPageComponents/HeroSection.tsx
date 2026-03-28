@@ -120,7 +120,7 @@ text-primary"
         </p>
 
         {/* Buttons */}
-        <div className="mt-8 flex gap-4">
+        <div className="mt-8 flex flex-col md:flex-row gap-4">
           <button className="relative px-8 py-3 bg-primary text-white font-bold rounded-full shadow-[0_0_20px_rgba(55,114,255,0.3)] cursor-pointer hover:scale-105 transition-transform">
             Book a Demo
           </button>
