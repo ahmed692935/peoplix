@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import LogoIcon from "../../assets/images/Vector.png";
-import LogoText from "../../assets/images/Peoplix.png";
+import logo from "../../assets/images/main-logo.webp"
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -88,8 +87,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between py-2 px-2">
         {/* Left - Logo */}
         <div className="flex items-center gap-2 pl-4">
-          <img src={LogoIcon} alt="Logo Icon" className="h-5 cursor-pointer" />
-          <img src={LogoText} alt="Logo Text" className="h-5 cursor-pointer" />
+          <img src={logo} alt="Logo" loading="lazy" className="h-15 cursor-pointer object-cover" />
         </div>
 
         {/* Center - Links */}

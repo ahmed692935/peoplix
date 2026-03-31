@@ -661,6 +661,7 @@
 // ─── NEW ENHANCED IMPLEMENTATION (ACTIVE) ──────────────────────────────────
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "../../assets/images/main-logo.webp"
 
 // ─── Icons ──────────────────────────────────────────────────────────────────
 const IconAutomate = () => (
@@ -704,20 +705,20 @@ const IconWorkday = () => (
 );
 
 // ─── Peoplix Logo ────────────────────────────────────────────────────────────
-const PeoplixIconEnhanced = () => (
-  <svg width="40" height="30" viewBox="0 0 40 30" fill="none">
-    <motion.circle
-      cx="14" cy="15" r="12" fill="white" fillOpacity="0.9"
-      animate={{ scale: [1, 1.05, 1] }}
-      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-    />
-    <motion.circle
-      cx="26" cy="15" r="12" fill="white" fillOpacity="0.5"
-      animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.7, 0.5] }}
-      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-    />
-  </svg>
-);
+// const PeoplixIconEnhanced = () => (
+//   <svg width="40" height="30" viewBox="0 0 40 30" fill="none">
+//     <motion.circle
+//       cx="14" cy="15" r="12" fill="white" fillOpacity="0.9"
+//       animate={{ scale: [1, 1.05, 1] }}
+//       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+//     />
+//     <motion.circle
+//       cx="26" cy="15" r="12" fill="white" fillOpacity="0.5"
+//       animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.7, 0.5] }}
+//       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+//     />
+//   </svg>
+// );
 
 const PeoplixCenterBoxEnhanced = () => (
   <div className="flex flex-col items-center group">
@@ -741,10 +742,7 @@ const PeoplixCenterBoxEnhanced = () => (
         }}
       >
         <div className="absolute inset-0 bg-linear-to-br from-white/10 to-transparent pointer-events-none" />
-        <PeoplixIconEnhanced />
-        <span className="text-white font-black text-lg tracking-wider relative z-10 uppercase drop-shadow-md">
-          Peoplix
-        </span>
+        <img src={logo} alt="logo" loading="lazy" className="h-18 object-cover" />
         <motion.div
           className="absolute top-0 left-0 w-full h-[2px] bg-primary/50 blur-[2px]"
           animate={{ top: ["0%", "100%", "0%"] }}

@@ -2,10 +2,15 @@ import Navbar from "./Navbar";
 import { GoDotFill } from "react-icons/go";
 import { FaArrowDownLong } from "react-icons/fa6";
 import { useEffect, useState } from "react";
+import { createWebCall } from "../../api/api";
+import ActiveCallModal from "./ActiveCallModal";
+import toast from "react-hot-toast";
 
 const HeroSection = () => {
   const fullText = "Enterprise Operations";
   const [typedText, setTypedText] = useState("");
+  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // useEffect(() => {
   //   let currentIndex = 0;
@@ -74,8 +79,21 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleBookDemo = async () => {
+    setIsLoading(true);
+    try {
+      await createWebCall();
+      setIsCallModalOpen(true);
+    } catch (error) {
+      console.error("Error creating web call:", error);
+      toast.error("Failed to start call. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="relative w-full h-[95vh] bg-background overflow-hidden">
+    <div className="relative w-full h-full 2xl:h-[95vh] bg-background overflow-hidden pt-25">
       {/* Background Glow */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full"></div>
@@ -86,7 +104,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 mt-5">
+      <div className="flex flex-col h-full items-center justify-center text-center text-white px-4 mt-5">
         {/* Small Text */}
         <div
           className="bg-dark-gray px-3 py-1 rounded-lg 
@@ -121,21 +139,33 @@ text-primary"
 
         {/* Buttons */}
         <div className="mt-8 flex flex-col md:flex-row gap-4">
-          <button className="relative px-8 py-3 bg-primary text-white font-bold rounded-full shadow-[0_0_20px_rgba(55,114,255,0.3)] cursor-pointer hover:scale-105 transition-transform">
-            Book a Demo
+          <button
+            onClick={handleBookDemo}
+            disabled={isLoading}
+            className="relative px-8 py-3 bg-primary text-white font-bold rounded-full shadow-[0_0_20px_rgba(55,114,255,0.3)] cursor-pointer hover:scale-105 transition-transform disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {isLoading ? "Connecting..." : "Book a Demo"}
           </button>
           <button className="px-8 py-3 cursor-pointer border border-divider bg-dark-gray text-white rounded-full hover:bg-divider transition">
             Watch 2-min Overview
           </button>
         </div>
 
-        <p className="absolute gap-2 flex bottom-5 md:bottom-3 left-1/2 -translate-x-1/2 text-text-gray font-medium text-[11px] md:text-sm">
-          Scroll for more{" "}
-          <span className=" p-1 flex items-center justify-center">
-            <FaArrowDownLong className="text-primary text-lg mt-1 animate-bounce" />
+        <button
+          onClick={() => document.getElementById("problem")?.scrollIntoView({ behavior: "smooth" })}
+          className="absolute gap-2 flex bottom-5 md:bottom-3 right-5 text-text-gray font-medium text-[11px] md:text-sm cursor-pointer hover:text-primary transition-colors group"
+        >
+          Scroll down{" "}
+          <span className="p-1 flex items-center justify-center">
+            <FaArrowDownLong className="text-primary text-lg mt-0 animate-bounce group-hover:scale-110 transition-transform" />
           </span>
-        </p>
+        </button>
       </div>
+
+      <ActiveCallModal
+        isOpen={isCallModalOpen}
+        onClose={() => setIsCallModalOpen(false)}
+      />
     </div>
   );
 };
