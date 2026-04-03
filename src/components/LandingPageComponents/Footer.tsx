@@ -1,4 +1,4 @@
-import Logo from "../../assets/images/Partial Circle.png";
+import Logo from "../../assets/images/main-tag.webp";
 
 const FooterSection = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -242,11 +242,7 @@ const FooterSection = () => {
                 <img
                   src={Logo}
                   alt="Peoplix Logo"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    objectFit: "contain",
-                  }}
+                  className="w-12 object-cover"
                 />
               </div>
               <p className="footer-brand-desc">
@@ -318,7 +314,7 @@ const FooterSection = () => {
             <hr className="footer-divider" />
             <div className="footer-bottom-bar">
               <p className="footer-copyright">
-                © {new Date().getFullYear()} AgenAI. All Rights Reserved.
+                © {new Date().getFullYear()} Peoplix. All Rights Reserved.
               </p>
               <button className="back-to-top-btn" onClick={scrollToTop}>
                 Back to top{" "}

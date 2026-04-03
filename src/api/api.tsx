@@ -19,3 +19,13 @@ export const getTopAgents = async () => {
   const response = await axiosInstance.get("/dashboard/metrics/top-agents");
   return response.data;
 };
+
+// CREATE WEB CALL API
+// export const createWebCall = async () => {
+//   const response = await axiosInstance.get(
+//     // "https://nonblamable-tempie-peccable.ngrok-free.dev/api/create-web-call"
+//     "https://nonblamable-tempie-peccable.ngrok-free.dev/api/create-web-call"
+//   );
+//   return response.data;
+// };
+

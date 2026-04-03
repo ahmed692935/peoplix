@@ -64,11 +64,15 @@ function App() {
 
       <Toaster
         position="top-right"
+        containerStyle={{
+          zIndex: 99999999,
+        }}
         toastOptions={{
           duration: 3000,
           style: {
             background: "#111827",
             color: "#fff",
+            zIndex: 9999999,
           },
         }}
       />
