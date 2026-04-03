@@ -4,8 +4,9 @@ import toast from "react-hot-toast";
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
+   "ngrok-skip-browser-warning": "true",
     "Content-Type": "application/json",
-    "ngrok-skip-browser-warning": "true",
+    Accept: "application/json",
   },
 });
 
@@ -14,7 +15,7 @@ axiosInstance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
 
-    // 🚫 Do NOT attach token for auth routes
+    // Do NOT attach token for auth routes
     if (token && !config.url?.includes("/auth/login")) {
       config.headers.Authorization = `Bearer ${token}`;
     }

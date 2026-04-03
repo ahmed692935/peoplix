@@ -1,18 +1,42 @@
-import { X, PhoneOff } from "lucide-react";
+import { X, PhoneOff, Mic, MicOff } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import userImg from "../../assets/images/user_1.png"
+import userImg from "../../assets/images/avatar-image.jpg";
+import { useState, useEffect } from "react";
 
 interface ActiveCallModalProps {
     isOpen: boolean;
+    isConnected: boolean;
     onClose: () => void;
+    isMuted: boolean;
+    onToggleMute: () => void;
 }
 
-const ActiveCallModal = ({ isOpen, onClose }: ActiveCallModalProps) => {
+const ActiveCallModal = ({ isOpen, isConnected, onClose, isMuted, onToggleMute }: ActiveCallModalProps) => {
+    const [seconds, setSeconds] = useState(0);
+
+    useEffect(() => {
+        let interval: any;
+        if (isOpen && isConnected) {
+            interval = setInterval(() => {
+                setSeconds((prev) => prev + 1);
+            }, 1000);
+        } else {
+            setSeconds(0);
+        }
+        return () => clearInterval(interval);
+    }, [isOpen, isConnected]);
+
+    const formatTime = (totalSeconds: number) => {
+        const mins = Math.floor(totalSeconds / 60);
+        const secs = totalSeconds % 60;
+        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    };
+
     return (
         <AnimatePresence>
             {isOpen && (
                 <div
-                    className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-md px-4"
+                    className="fixed inset-0 z-999999 flex items-center justify-center bg-black/80 backdrop-blur-md px-4"
                 >
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -22,10 +46,10 @@ const ActiveCallModal = ({ isOpen, onClose }: ActiveCallModalProps) => {
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Call ID / Header */}
-                        <div className="absolute top-6 left-6 flex items-center gap-2">
+                        {/* <div className="absolute top-6 left-6 flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                             <span className="text-xs font-semibold text-text-gray tracking-widest uppercase">Live Demo Call</span>
-                        </div>
+                        </div> */}
 
                         {/* Profile Image / Pulse Animation */}
                         <div className="relative mt-4">
@@ -66,11 +90,32 @@ const ActiveCallModal = ({ isOpen, onClose }: ActiveCallModalProps) => {
 
                         <div className="mt-8 space-y-2">
                             <h3 className="text-2xl md:text-3xl font-bold text-white">Ava - HR Agent</h3>
-                            <p className="text-primary font-medium animate-pulse">Calling Ongoing...</p>
+                            {isConnected ? (
+                                <p className="text-primary font-mono text-xl font-bold tracking-wider">
+                                    {formatTime(seconds)}
+                                </p>
+                            ) : (
+                                <p className="text-primary font-medium animate-pulse flex items-center justify-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
+                                    {/* Connecting to Agent... */}
+                                    Ongoing...
+                                </p>
+                            )}
                         </div>
 
                         {/* Controls */}
                         <div className="mt-12 flex items-center gap-6">
+                            <button
+                                onClick={onToggleMute}
+                                className={`w-14 h-14 rounded-full flex items-center justify-center transition-all cursor-pointer ${
+                                    isMuted 
+                                    ? "bg-red-500/10 text-red-500 border border-red-500/20" 
+                                    : "bg-neutral-800 text-white hover:bg-neutral-700"
+                                }`}
+                                title={isMuted ? "Unmute" : "Mute"}
+                            >
+                                {isMuted ? <MicOff className="w-6 h-6" /> : <Mic className="w-6 h-6" />}
+                            </button>
 
                             <button
                                 onClick={onClose}

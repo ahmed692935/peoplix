@@ -314,7 +314,7 @@ const FooterSection = () => {
             <hr className="footer-divider" />
             <div className="footer-bottom-bar">
               <p className="footer-copyright">
-                © {new Date().getFullYear()} AgenAI. All Rights Reserved.
+                © {new Date().getFullYear()} Peoplix. All Rights Reserved.
               </p>
               <button className="back-to-top-btn" onClick={scrollToTop}>
                 Back to top{" "}

@@ -2,27 +2,15 @@ import Navbar from "./Navbar";
 import { GoDotFill } from "react-icons/go";
 import { FaArrowDownLong } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import { createWebCall } from "../../api/api";
-import ActiveCallModal from "./ActiveCallModal";
-import toast from "react-hot-toast";
+
+import video from "../../assets/Videos/see-peoplix-in-action.mp4"
+import VideoModal from "./VideoModal";
 
 const HeroSection = () => {
   const fullText = "Enterprise Operations";
   const [typedText, setTypedText] = useState("");
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
-  // useEffect(() => {
-  //   let currentIndex = 0;
-  //   const interval = setInterval(() => {
-  //     setTypedText(fullText.slice(0, currentIndex + 1));
-  //     currentIndex++;
-  //     if (currentIndex === fullText.length) {
-  //       clearInterval(interval); // stop once complete
-  //     }
-  //   }, 100); // 100ms per letter
-  //   return () => clearInterval(interval);
-  // }, []);
   useEffect(() => {
     let currentIndex = 0;
     let isDeleting = false;
@@ -79,27 +67,18 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleBookDemo = async () => {
-    setIsLoading(true);
-    try {
-      await createWebCall();
-      setIsCallModalOpen(true);
-    } catch (error) {
-      console.error("Error creating web call:", error);
-      toast.error("Failed to start call. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
+  const handleBookDemo = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <div className="relative w-full h-full 2xl:h-[95vh] bg-background overflow-hidden pt-25">
+    <div className="relative w-full h-full 2xl:h-[95vh] bg-background overflow-hidden pt-25 pb-12.5">
       {/* Background Glow */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full"></div>
 
       {/* Navbar (Image ke upar) */}
-      <div className="absolute top-5 left-0 w-full flex justify-center z-20">
+      <div className="absolute top-5 left-0 w-full flex justify-center z-99999">
         <Navbar />
       </div>
 
@@ -108,11 +87,12 @@ const HeroSection = () => {
         {/* Small Text */}
         <div
           className="bg-dark-gray px-3 py-1 rounded-lg 
-border border-divider flex gap-1 items-center"
+            border border-divider flex gap-1 items-center"
         >
           <GoDotFill className="text-primary" />
           <span className="text-sm text-primary font-semibold">
-            Now integrated with Workday
+            {/* Now integrated with Workday */}
+            Workplace support, simplified
           </span>
         </div>
 
@@ -122,9 +102,8 @@ border border-divider flex gap-1 items-center"
         </h1>
         <h1
           className="text-3xl md:text-[96px] font-semibold tracking-tighter mt-4 
-text-primary"
+            text-primary"
         >
-          {/* Enterprise Operations */}
           {typedText}
         </h1>
 
@@ -141,19 +120,21 @@ text-primary"
         <div className="mt-8 flex flex-col md:flex-row gap-4">
           <button
             onClick={handleBookDemo}
-            disabled={isLoading}
-            className="relative px-8 py-3 bg-primary text-white font-bold rounded-full shadow-[0_0_20px_rgba(55,114,255,0.3)] cursor-pointer hover:scale-105 transition-transform disabled:opacity-70 disabled:cursor-not-allowed"
+            className="relative px-8 py-3 bg-primary text-white font-bold rounded-full shadow-[0_0_20px_rgba(55,114,255,0.3)] cursor-pointer hover:scale-105 transition-transform"
           >
-            {isLoading ? "Connecting..." : "Book a Demo"}
+            Book a Demo
           </button>
-          <button className="px-8 py-3 cursor-pointer border border-divider bg-dark-gray text-white rounded-full hover:bg-divider transition">
-            Watch 2-min Overview
+          <button
+            onClick={() => setIsVideoModalOpen(true)}
+            className="px-8 py-3 cursor-pointer border border-divider bg-dark-gray text-white rounded-full hover:bg-divider transition"
+          >
+            See Peoplix in action
           </button>
         </div>
 
         <button
           onClick={() => document.getElementById("problem")?.scrollIntoView({ behavior: "smooth" })}
-          className="absolute gap-2 flex bottom-5 md:bottom-3 right-5 text-text-gray font-medium text-[11px] md:text-sm cursor-pointer hover:text-primary transition-colors group"
+          className="absolute gap-2 flex bottom-10 right-5 text-text-gray font-medium text-[11px] md:text-sm cursor-pointer hover:text-primary transition-colors group"
         >
           Scroll down{" "}
           <span className="p-1 flex items-center justify-center">
@@ -162,9 +143,10 @@ text-primary"
         </button>
       </div>
 
-      <ActiveCallModal
-        isOpen={isCallModalOpen}
-        onClose={() => setIsCallModalOpen(false)}
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        videoSrc={video}
       />
     </div>
   );

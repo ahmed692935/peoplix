@@ -21,10 +21,11 @@ export const getTopAgents = async () => {
 };
 
 // CREATE WEB CALL API
-export const createWebCall = async () => {
-  const response = await axiosInstance.post(
-    "https://nonblamable-tempie-peccable.ngrok-free.dev/api/create-web-call"
-  );
-  return response.data;
-};
+// export const createWebCall = async () => {
+//   const response = await axiosInstance.get(
+//     // "https://nonblamable-tempie-peccable.ngrok-free.dev/api/create-web-call"
+//     "https://nonblamable-tempie-peccable.ngrok-free.dev/api/create-web-call"
+//   );
+//   return response.data;
+// };
 
